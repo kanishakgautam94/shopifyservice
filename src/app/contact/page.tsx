@@ -9,7 +9,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a free Shopify consultation. Get a live audit of your store and senior advice on how to grow — no pressure, no obligation.",
+    "Book a free Shopify consultation. Get a live audit of your store and senior advice on how to grow. No pressure, no obligation.",
 };
 
 const points = [
@@ -25,7 +25,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Book your free consultation"
-        description="Tell us about your store and goals. We'll review it and get back to you with senior, honest advice — usually within one business day."
+        description="Tell us about your store and goals. We'll review it and get back to you with senior, honest advice, usually within one business day."
       />
 
       <section className="pb-24">

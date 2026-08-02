@@ -30,7 +30,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Fast, reliable, and they actually understand ecommerce — not just code. Our checkout customization directly lifted average order value.",
+      "Fast, reliable, and they actually understand ecommerce, not just code. Our checkout customization directly lifted average order value.",
     name: "Daniel R.",
     title: "CEO, Fashion Accessories",
     initials: "DR",

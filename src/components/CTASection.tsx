@@ -17,7 +17,7 @@ export function CTASection() {
               </h2>
               <p className="text-pretty text-lg text-muted">
                 Book a free 30-minute consultation and get a live audit of your store. No
-                pressure, no obligation — just senior advice you can use.
+                pressure, no obligation, just senior advice you can use.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href="/contact" size="lg">

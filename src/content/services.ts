@@ -7,6 +7,7 @@ import {
   TrendingUp,
   Plug,
   LifeBuoy,
+  Bot,
   type LucideIcon,
 } from "lucide-react";
 
@@ -49,6 +50,20 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "ai-llm",
+    icon: Bot,
+    title: "AI Agents & LLM Integrations",
+    short: "Ship intelligent features and automate real work with AI.",
+    description:
+      "We build AI directly into your store, not as a gimmick but as infrastructure. Checkout sales assistants, product recommendation engines, semantic search, AI-generated content at scale, and autonomous order-flow agents powered by Claude, OpenAI, and the Anthropic API. We also develop with AI daily, so you get senior-level code with materially faster turnaround.",
+    deliverables: [
+      "AI sales & support agents",
+      "LLM content & semantic search",
+      "RAG, embeddings & smart merchandising",
+      "AI-accelerated delivery (weeks, not quarters)",
+    ],
+  },
+  {
     slug: "shopify-plus",
     icon: Rocket,
     title: "Shopify Plus",
@@ -68,7 +83,7 @@ export const services: Service[] = [
     title: "Headless & Hydrogen",
     short: "Blazing-fast headless commerce on Hydrogen + Oxygen.",
     description:
-      "Headless storefronts using Hydrogen, Oxygen, and the Storefront API — or Next.js when it fits better. Ideal for content-heavy, performance-obsessed brands that need total design freedom.",
+      "Headless storefronts using Hydrogen, Oxygen, and the Storefront API, or Next.js when it fits better. Ideal for content-heavy, performance-obsessed brands that need total design freedom.",
     deliverables: [
       "Hydrogen / Oxygen storefronts",
       "Storefront API & custom data",
@@ -96,7 +111,7 @@ export const services: Service[] = [
     title: "Conversion Rate Optimization",
     short: "Data-driven experiments that lift revenue per visitor.",
     description:
-      "Structured CRO programs: audits, hypotheses, A/B testing, and analytics. We find where you leak revenue and systematically fix it — from PDPs to cart to checkout.",
+      "Structured CRO programs: audits, hypotheses, A/B testing, and analytics. We find where you leak revenue and systematically fix it, from PDPs to cart to checkout.",
     deliverables: [
       "Conversion & UX audits",
       "A/B & multivariate testing",
@@ -124,7 +139,7 @@ export const services: Service[] = [
     title: "Maintenance & Support",
     short: "A dedicated Shopify team on retainer, whenever you need it.",
     description:
-      "Ongoing development retainers for growing brands. Priority fixes, new features, performance monitoring, and a partner who already knows your store — no ramp-up, no agency overhead.",
+      "Ongoing development retainers for growing brands. Priority fixes, new features, performance monitoring, and a partner who already knows your store, with no ramp-up and no agency overhead.",
     deliverables: [
       "Monthly development retainers",
       "Priority bug fixes & SLAs",

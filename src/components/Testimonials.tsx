@@ -11,7 +11,7 @@ export function Testimonials() {
         <SectionHeading
           eyebrow="Client love"
           title="Brands that trust us keep coming back"
-          description="We measure success in revenue, retention, and referrals — not just launches."
+          description="We measure success in revenue, retention, and referrals, not just launches."
           align="center"
         />
 

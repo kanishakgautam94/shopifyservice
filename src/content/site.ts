@@ -9,7 +9,7 @@ export const site = {
   email: "info@shopifyservice.com",
   phone: "+1 (437) 234-1184",
   phoneHref: "+14372341184",
-  location: "Toronto, Canada — working with brands worldwide",
+  location: "Toronto, Canada. Working with brands worldwide",
   // Replace with your real Calendly link. Falls back to the contact section if unset.
   calendlyUrl:
     process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/shopifyservice/consultation",

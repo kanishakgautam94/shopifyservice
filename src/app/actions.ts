@@ -49,7 +49,7 @@ export async function submitContact(
 
   const data = parsed.data;
 
-  // Honeypot triggered — silently accept without sending.
+  // Honeypot triggered: silently accept without sending.
   if (data.company_url && data.company_url.length > 0) {
     return { status: "success", message: "Thanks! We'll be in touch shortly." };
   }
@@ -60,7 +60,7 @@ export async function submitContact(
 
   if (!apiKey) {
     // Fail gracefully in dev / before env is configured, but log for visibility.
-    console.warn("[contact] RESEND_API_KEY not set — logging submission instead:", {
+    console.warn("[contact] RESEND_API_KEY not set, logging submission instead:", {
       name: data.name,
       email: data.email,
       company: data.company,
@@ -82,9 +82,9 @@ export async function submitContact(
         <h2>New consultation request</h2>
         <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
-        <p><strong>Company:</strong> ${escapeHtml(data.company || "—")}</p>
-        <p><strong>Website:</strong> ${escapeHtml(data.website || "—")}</p>
-        <p><strong>Annual revenue:</strong> ${escapeHtml(data.revenue || "—")}</p>
+        <p><strong>Company:</strong> ${escapeHtml(data.company || "N/A")}</p>
+        <p><strong>Website:</strong> ${escapeHtml(data.website || "N/A")}</p>
+        <p><strong>Annual revenue:</strong> ${escapeHtml(data.revenue || "N/A")}</p>
         <p><strong>Message:</strong></p>
         <p style="white-space:pre-wrap">${escapeHtml(data.message)}</p>
       `,

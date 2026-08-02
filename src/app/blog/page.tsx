@@ -22,7 +22,7 @@ export default function BlogPage() {
       <PageHeader
         eyebrow="Blog"
         title="Ideas for scaling on Shopify"
-        description="Practical insights from the trenches — on development, performance, CRO, and growing 7 and 8-figure stores."
+        description="Practical insights from the trenches on development, performance, CRO, and growing 7 and 8-figure stores."
       />
 
       <section className="pb-24">

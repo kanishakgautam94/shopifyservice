@@ -30,13 +30,13 @@ export const team: TeamMember[] = [
   {
     name: "SEO Strategist",
     role: "Technical & Content SEO",
-    bio: "Owns technical SEO, migrations, and content strategy — keeping rankings intact through replatforms and driving organic growth.",
+    bio: "Owns technical SEO, migrations, and content strategy, keeping rankings intact through replatforms and driving organic growth.",
     initials: "SE",
   },
   {
     name: "Growth & Content Writer",
     role: "Ecommerce Copy & Content",
-    bio: "Writes product, landing page, and email copy that sells — plus the content engine behind your organic and paid campaigns.",
+    bio: "Writes product, landing page, and email copy that sells, plus the content engine behind your organic and paid campaigns.",
     initials: "CW",
   },
   {

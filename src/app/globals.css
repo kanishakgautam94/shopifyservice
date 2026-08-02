@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #060809;
-  --color-surface: #0c1012;
-  --color-surface-2: #141a1d;
-  --color-border: #1e262a;
-  --color-foreground: #eef2f0;
-  --color-muted: #9aa7a2;
-  --color-muted-2: #6b7873;
+  /* Trust & Authority palette: slate/navy-tinted cinematic dark base
+     (avoids pure #000 per design-system guidance) with an emerald brand accent. */
+  --color-background: #070b14;
+  --color-surface: #0d1420;
+  --color-surface-2: #141d2e;
+  --color-border: #1f2a3d;
+  --color-foreground: #eef2f6;
+  --color-muted: #94a3b8;
+  /* #7f8c9e ~= 5.7:1 on the background, keeping small secondary text WCAG AA compliant */
+  --color-muted-2: #7f8c9e;
+
+  --color-secondary: #334155;
 
   --color-accent: #37e17f;
   --color-accent-dark: #14b85c;
-  --color-accent-soft: #0f2a1c;
+  --color-accent-soft: #0c2a1b;
 
+  --font-heading: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
 
@@ -20,6 +26,9 @@
   --radius-2xl: 1.75rem;
 
   --shadow-glow: 0 0 60px -15px rgba(55, 225, 127, 0.45);
+
+  /* Expo-out easing from the design system (Bezier 0.16,1,0.3,1) */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
@@ -40,6 +49,32 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Every interactive element should signal clickability (design-system checklist) */
+button,
+a,
+[role="button"],
+summary,
+label[for] {
+  cursor: pointer;
+}
+
+/* Visible keyboard focus for all interactive elements (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 ::selection {
@@ -63,8 +98,16 @@ body {
   );
 }
 
+/* Frosted glass surface (Modern Dark / glassmorphism style) */
+.glass {
+  background-color: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+}
+
 .text-gradient {
-  background: linear-gradient(180deg, #ffffff 0%, #b9c4bf 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #c1ccd8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -93,14 +136,16 @@ body {
 
 .card-hover {
   transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background-color 0.3s ease;
+    transform 0.3s var(--ease-expo),
+    border-color 0.3s var(--ease-expo),
+    box-shadow 0.3s var(--ease-expo),
+    background-color 0.3s var(--ease-expo);
 }
 
 .card-hover:hover {
   transform: translateY(-4px);
   border-color: rgba(55, 225, 127, 0.4);
+  box-shadow: 0 18px 50px -22px rgba(0, 0, 0, 0.75);
 }
 
 /* Custom scrollbar */

@@ -11,7 +11,7 @@ import { projects } from "@/content/projects";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Selected Shopify and Shopify Plus projects across skincare, furniture, supplements, luxury accessories, and more — delivered for brands in 75+ countries.",
+    "Selected Shopify and Shopify Plus projects across skincare, furniture, supplements, luxury accessories, and more, delivered for brands in 75+ countries.",
 };
 
 export default function WorkPage() {
@@ -23,7 +23,7 @@ export default function WorkPage() {
       <PageHeader
         eyebrow="Our work"
         title="Stores we've built and scaled"
-        description="700+ projects delivered across 75+ countries. Here's a selection — detailed case studies are on the way as we get sign-off from each brand."
+        description="700+ projects delivered across 75+ countries. Here's a selection. Detailed case studies are on the way as we get sign-off from each brand."
       />
 
       {featured && (

@@ -11,17 +11,17 @@ import { team } from "@/content/team";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "A senior Shopify developer and a hand-picked team of designers, developers, SEO, content, and marketplace specialists — serving ambitious brands worldwide.",
+    "A senior Shopify developer and a hand-picked team of designers, developers, SEO, content, and marketplace specialists, serving ambitious brands worldwide.",
 };
 
 const values = [
   {
     title: "Senior by default",
-    desc: "You work directly with people who've shipped hundreds of stores — never junior guesswork.",
+    desc: "You work directly with people who've shipped hundreds of stores. Never junior guesswork.",
   },
   {
     title: "Revenue-obsessed",
-    desc: "Every decision is tied to conversion, retention, and growth — not vanity metrics.",
+    desc: "Every decision is tied to conversion, retention, and growth, not vanity metrics.",
   },
   {
     title: "Radically transparent",
@@ -52,15 +52,15 @@ export default function AboutPage() {
                   development at{" "}
                   <span className="font-semibold text-foreground">Transformer Table</span>, which I
                   joined as a $50M brand and helped grow into a{" "}
-                  <span className="font-semibold text-foreground">$150M</span> business — writing
+                  <span className="font-semibold text-foreground">$150M</span> business, writing
                   the code, leading developers, and solving the hard commerce problems that come
                   with scale.
                 </p>
                 <p>
                   Shopify Service is how I bring that same senior, in-the-trenches experience to
                   other ambitious brands. When a project needs more hands, I pull in a hand-picked
-                  team I trust — designers, developers, UI/UX, SEO, content, and Amazon &amp;
-                  marketplace specialists — so you get a complete team without managing five
+                  team I trust: designers, developers, UI/UX, SEO, content, and Amazon &amp;
+                  marketplace specialists, so you get a complete team without managing five
                   freelancers yourself.
                 </p>
                 <p>

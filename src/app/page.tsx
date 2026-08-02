@@ -1,4 +1,14 @@
-import { ArrowRight, Search, PenTool, Code2, Rocket } from "lucide-react";
+import {
+  ArrowRight,
+  Search,
+  PenTool,
+  Code2,
+  Rocket,
+  ShieldCheck,
+  UserCheck,
+  FileCheck2,
+  Gauge,
+} from "lucide-react";
 import { Hero } from "@/components/Hero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -8,6 +18,8 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { TeamCard } from "@/components/TeamCard";
 import { Testimonials } from "@/components/Testimonials";
+import { AISection } from "@/components/AISection";
+import { StackSection } from "@/components/StackSection";
 import { CTASection } from "@/components/CTASection";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
@@ -26,6 +38,13 @@ const marquee = [
   "Checkout Extensions",
 ];
 
+const trust = [
+  { icon: UserCheck, label: "Senior-only team", desc: "No juniors on your project" },
+  { icon: ShieldCheck, label: "NDA-friendly", desc: "Your data stays private" },
+  { icon: FileCheck2, label: "Fixed-scope quotes", desc: "No surprise invoices" },
+  { icon: Gauge, label: "Speed-obsessed", desc: "Core Web Vitals by default" },
+];
+
 const process = [
   {
     icon: Search,
@@ -40,7 +59,7 @@ const process = [
   {
     icon: Code2,
     title: "Build",
-    desc: "Clean, fast, maintainable code — themes, apps, or headless — with rigorous QA.",
+    desc: "Clean, fast, maintainable code across themes, apps, and headless, with rigorous QA.",
   },
   {
     icon: Rocket,
@@ -73,6 +92,30 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Trust & Authority strip */}
+      <section className="py-14">
+        <Container>
+          <RevealStagger className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {trust.map((t) => {
+              const Icon = t.icon;
+              return (
+                <RevealItem key={t.label}>
+                  <div className="flex items-center gap-3.5 rounded-2xl border border-border bg-surface px-5 py-4">
+                    <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent ring-1 ring-inset ring-accent/20">
+                      <Icon className="size-5" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{t.label}</p>
+                      <p className="text-xs text-muted">{t.desc}</p>
+                    </div>
+                  </div>
+                </RevealItem>
+              );
+            })}
+          </RevealStagger>
+        </Container>
+      </section>
+
       {/* Services */}
       <section id="services" className="py-24">
         <Container>
@@ -80,7 +123,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="What we do"
               title="Everything Shopify, under one roof"
-              description="From your first theme to a headless rebuild and everything in between — one senior team for the whole ecosystem."
+              description="From your first theme to a headless rebuild and everything in between, all from one senior team."
             />
             <Reveal>
               <ButtonLink href="/services" variant="secondary">
@@ -90,14 +133,21 @@ export default function HomePage() {
           </div>
 
           <RevealStagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {services.slice(0, 8).map((service) => (
-              <RevealItem key={service.slug} className="h-full">
-                <ServiceCard service={service} />
-              </RevealItem>
-            ))}
+            {services
+              .filter((s) => s.slug !== "ai-llm")
+              .slice(0, 8)
+              .map((service) => (
+                <RevealItem key={service.slug} className="h-full">
+                  <ServiceCard service={service} />
+                </RevealItem>
+              ))}
           </RevealStagger>
         </Container>
       </section>
+
+      <AISection />
+
+      <StackSection />
 
       {/* Process */}
       <section className="border-y border-border bg-surface py-24">
@@ -105,7 +155,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="How we work"
             title="A proven process, minus the agency overhead"
-            description="You work directly with senior people. No account managers, no telephone game — just clear communication and results."
+            description="You work directly with senior people. No account managers, no telephone game, just clear communication and results."
             align="center"
           />
           <RevealStagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

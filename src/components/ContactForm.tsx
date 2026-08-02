@@ -63,7 +63,7 @@ export function ContactForm() {
 
   return (
     <form action={formAction} className="flex flex-col gap-5">
-      {/* Honeypot field — hidden from humans */}
+      {/* Honeypot field, hidden from humans */}
       <div className="absolute left-[-9999px]" aria-hidden="true">
         <label htmlFor="company_url">Do not fill this in</label>
         <input id="company_url" name="company_url" type="text" tabIndex={-1} autoComplete="off" />

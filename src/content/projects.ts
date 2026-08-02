@@ -29,7 +29,7 @@ export const projects: Project[] = [
     name: "Amazology",
     category: "Theme · Men's Skincare",
     summary:
-      "Restorative hair & skincare for men with natural ingredients from the Amazon Rainforest — custom storefront and brand experience.",
+      "Restorative hair & skincare for men with natural ingredients from the Amazon Rainforest. Custom storefront and brand experience.",
     result: "Custom brand storefront",
     tags: ["Theme Dev", "Branding", "CRO"],
     accent: "#8b5cf6",

@@ -24,7 +24,7 @@ export function Footer() {
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-muted">
               End-to-end Shopify development for ambitious 7 and 8-figure brands. Design, build,
-              and scale — with a senior team you can trust.
+              and scale, with a senior team you can trust.
             </p>
             <div className="mt-2 flex flex-col gap-2 text-sm text-muted">
               <a href={`mailto:${site.email}`} className="flex items-center gap-2 transition-colors hover:text-accent">

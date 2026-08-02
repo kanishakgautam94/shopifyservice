@@ -11,7 +11,7 @@ export const contactSchema = z.object({
     .trim()
     .min(10, "Tell us a little more (at least 10 characters)")
     .max(4000),
-  // Honeypot — must stay empty. Bots tend to fill every field.
+  // Honeypot: must stay empty. Bots tend to fill every field.
   company_url: z.string().max(0).optional(),
 });
 
@@ -19,8 +19,8 @@ export type ContactInput = z.infer<typeof contactSchema>;
 
 export const revenueOptions = [
   "Under $1M",
-  "$1M – $5M",
-  "$5M – $20M",
-  "$20M – $100M",
+  "$1M to $5M",
+  "$5M to $20M",
+  "$20M to $100M",
   "$100M+",
 ] as const;

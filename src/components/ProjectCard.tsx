@@ -1,6 +1,7 @@
 import { TrendingUp } from "lucide-react";
 import type { Project } from "@/content/projects";
 import { cn } from "@/lib/utils";
+import { HoverCard } from "@/components/ui/HoverCard";
 
 export function ProjectCard({
   project,
@@ -10,9 +11,9 @@ export function ProjectCard({
   className?: string;
 }) {
   return (
-    <article
+    <HoverCard
       className={cn(
-        "card-hover group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface",
+        "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-[0_18px_50px_-22px_rgba(0,0,0,0.75)]",
         className,
       )}
     >
@@ -59,6 +60,6 @@ export function ProjectCard({
           ))}
         </div>
       </div>
-    </article>
+    </HoverCard>
   );
 }
