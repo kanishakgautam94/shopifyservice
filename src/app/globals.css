@@ -1,26 +1,207 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #060809;
+  --color-surface: #0c1012;
+  --color-surface-2: #141a1d;
+  --color-border: #1e262a;
+  --color-foreground: #eef2f0;
+  --color-muted: #9aa7a2;
+  --color-muted-2: #6b7873;
+
+  --color-accent: #37e17f;
+  --color-accent-dark: #14b85c;
+  --color-accent-soft: #0f2a1c;
+
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+
+  --shadow-glow: 0 0 60px -15px rgba(55, 225, 127, 0.45);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--color-border);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: rgba(55, 225, 127, 0.25);
+  color: #ffffff;
+}
+
+/* Subtle grid / glow background helpers */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.bg-radial-accent {
+  background-image: radial-gradient(
+    ellipse 60% 50% at 50% -10%,
+    rgba(55, 225, 127, 0.18),
+    transparent 70%
+  );
+}
+
+.text-gradient {
+  background: linear-gradient(180deg, #ffffff 0%, #b9c4bf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(120deg, #37e17f 0%, #7af0b0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Marquee animation for trust bar */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.card-hover {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(55, 225, 127, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-2);
+}
+
+/* Prose overrides for blog */
+.prose-custom {
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+.prose-custom h1,
+.prose-custom h2,
+.prose-custom h3,
+.prose-custom h4 {
+  color: var(--color-foreground);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  line-height: 1.2;
+}
+.prose-custom h1 {
+  font-size: 2.2rem;
+}
+.prose-custom h2 {
+  font-size: 1.6rem;
+}
+.prose-custom h3 {
+  font-size: 1.25rem;
+}
+.prose-custom p,
+.prose-custom ul,
+.prose-custom ol {
+  margin-bottom: 1.25em;
+}
+.prose-custom a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-custom ul {
+  list-style: disc;
+  padding-left: 1.4em;
+}
+.prose-custom ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.prose-custom li {
+  margin-bottom: 0.5em;
+}
+.prose-custom strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}
+.prose-custom blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25em;
+  font-style: italic;
+  color: var(--color-foreground);
+  margin: 1.5em 0;
+}
+.prose-custom code {
+  background: var(--color-surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 0.35em;
+  font-size: 0.9em;
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+}
+.prose-custom pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75em;
+  padding: 1.25em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.prose-custom pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--color-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

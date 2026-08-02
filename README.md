@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shopify Service — Marketing Website
 
-## Getting Started
+A premium, conversion-focused marketing site for an end-to-end Shopify freelance/studio business. Built to convert paid (Google/Meta) ad traffic from 7 and 8-figure brands into booked consultation calls.
 
-First, run the development server:
+## Tech stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS v4** (CSS-first `@theme` tokens)
+- **Framer Motion** for animation
+- **Resend** + **Zod** for the contact form (Server Action + honeypot)
+- **Calendly** embed for booking calls
+- **MDX** blog (`src/content/blog/*.mdx`)
+- **Vercel Analytics** + **Google Analytics 4**
+- Deployed on **Vercel**, auto-deploy on push to `main`
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # fill in values (all optional for local dev)
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site works with zero env vars locally: the contact form logs submissions to
+the console instead of emailing, and the Calendly section shows a placeholder.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├─ app/                 # routes (home, services, work, about, blog, contact)
+│  ├─ actions.ts        # contact form Server Action (Zod + Resend)
+│  ├─ sitemap.ts        # SEO sitemap
+│  ├─ robots.ts         # robots.txt
+│  └─ opengraph-image.tsx
+├─ components/          # UI + section components
+├─ content/            # editable site content (edit these, then push)
+│  ├─ site.ts          # name, contact info, stats, nav
+│  ├─ services.ts      # service offerings
+│  ├─ team.ts          # team members (add photos to /public/team)
+│  ├─ testimonials.ts  # client quotes
+│  ├─ projects.ts      # portfolio / case studies
+│  └─ blog/*.mdx       # blog posts
+└─ lib/                # utils, blog loader, schema, formatting
+```
 
-## Learn More
+## Editing content
 
-To learn more about Next.js, take a look at the following resources:
+Everything is in `src/content`. To add a blog post, drop a new `.mdx` file in
+`src/content/blog` with frontmatter (`title`, `description`, `date`, `author`,
+`tags`). Team photos go in `public/team/` and are referenced from `team.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Resend API key for sending contact-form emails |
+| `CONTACT_TO_EMAIL` | Inbox that receives leads (default `info@shopifyservice.com`) |
+| `CONTACT_FROM_EMAIL` | Verified Resend sender |
+| `NEXT_PUBLIC_CALENDLY_URL` | Live Calendly booking URL |
+| `NEXT_PUBLIC_GA_ID` | GA4 measurement ID for ad conversion tracking |
 
-## Deploy on Vercel
+## Deploy to Vercel (auto-deploy on `main`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push this repo to GitHub.
+2. In [vercel.com](https://vercel.com) → **New Project** → import the repo.
+   Framework preset auto-detects Next.js; no config needed.
+3. Add the environment variables above under **Settings → Environment Variables**.
+4. Deploy. Every push to `main` redeploys automatically; pull requests get
+   preview URLs.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Connecting the domain (`shopifyservice.com`)
+
+Once you're happy with the deployment and ready to move off WordPress:
+
+1. In Vercel → **Settings → Domains**, add `shopifyservice.com` and `www.shopifyservice.com`.
+2. Vercel shows the DNS records to set. At your domain registrar, update:
+   - **A record** `@` → `76.76.21.21` (or the value Vercel shows), **or** a CNAME/ALIAS to `cname.vercel-dns.com`.
+   - **CNAME** `www` → `cname.vercel-dns.com`.
+3. Remove the old WordPress DNS records pointing to your previous host.
+4. Vercel provisions an SSL certificate automatically. Propagation can take up to
+   a few hours.
+
+## Pre-launch checklist
+
+- [ ] Add real team photos + bios (`src/content/team.ts`, `public/team/`)
+- [ ] Replace placeholder testimonials with real quotes
+- [ ] Add real case studies (`src/content/projects.ts`)
+- [ ] Verify a sending domain in Resend and set `CONTACT_FROM_EMAIL`
+- [ ] Set `NEXT_PUBLIC_CALENDLY_URL` and `NEXT_PUBLIC_GA_ID`
+- [ ] Confirm contact form delivers to your inbox
+- [ ] Point DNS to Vercel
+```
