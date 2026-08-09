@@ -5,7 +5,7 @@ export const site = {
   url: "https://shopifyservice.com",
   tagline: "Senior Shopify development, led by the person who builds it",
   description:
-    "Shopify Service is a boutique Shopify studio led by senior developer Kanishak Gautam. I design, build, and scale high-converting Shopify and Shopify Plus stores for 7 and 8-figure brands, bringing in trusted specialists for design, SEO, and content when your project needs them.",
+    "Shopify Service is a boutique Shopify studio led by senior developer Kanishak Gautam. I design, build, and scale high-converting Shopify and Shopify Plus stores for 7 and 8-figure brands, with a small collaborator team across design, content, and development.",
   email: "info@shopifyservice.com",
   phone: "+1 (437) 234-1184",
   phoneHref: "+14372341184",

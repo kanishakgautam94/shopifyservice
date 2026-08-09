@@ -7,9 +7,11 @@ export type TeamMember = {
   initials: string;
 };
 
-export type CollaboratorSpecialty = {
-  title: string;
-  description: string;
+/** A collaborator seat. When `member` is set, the real person is shown. */
+export type CollaboratorSeat = {
+  role: string;
+  blurb: string;
+  member?: TeamMember;
 };
 
 export const founder: TeamMember = {
@@ -19,34 +21,36 @@ export const founder: TeamMember = {
   initials: "KG",
 };
 
-/** Roles I pull in by project. Swap in real names + photos when colleagues approve. */
-export const specialties: CollaboratorSpecialty[] = [
+/**
+ * Open seats match the colleagues being invited.
+ * Drop real name/photo/bio into `member` when they approve.
+ */
+export const collaboratorSeats: CollaboratorSeat[] = [
   {
-    title: "UI/UX Design",
-    description:
-      "Conversion-focused ecommerce design and Figma systems that ship cleanly into Shopify.",
+    role: "UI/UX Design",
+    blurb: "Ecommerce design and Figma systems that ship cleanly into Shopify.",
   },
   {
-    title: "SEO",
-    description:
-      "Technical SEO, migrations, and organic growth so rankings stay intact through rebuilds.",
+    role: "UI/UX Design",
+    blurb: "Additional design support for larger storefront and brand projects.",
   },
   {
-    title: "Content Strategy",
-    description:
-      "Product copy, landing pages, and the content engine behind organic and paid campaigns.",
+    role: "Content Strategy",
+    blurb: "Messaging, landing-page structure, and content direction for growth.",
   },
   {
-    title: "Additional Development",
-    description:
-      "Extra senior hands on Liquid, React, or Hydrogen when a build needs more capacity.",
+    role: "Content Writing",
+    blurb: "Product copy, page copy, and campaign writing that sells.",
   },
   {
-    title: "Amazon & Marketplaces",
-    description:
-      "Marketplace expansion and Shopify-to-marketplace sync when brands go omnichannel.",
+    role: "Full Stack Development",
+    blurb: "Frontend-leaning Shopify builds: themes, Hydrogen, and storefront UX.",
+  },
+  {
+    role: "Full Stack Development",
+    blurb: "Backend-leaning Shopify builds: apps, APIs, and integrations.",
   },
 ];
 
-/** @deprecated Prefer founder + specialties. Kept for any remaining TeamCard previews. */
+/** @deprecated Prefer founder + collaboratorSeats. */
 export const team: TeamMember[] = [founder];

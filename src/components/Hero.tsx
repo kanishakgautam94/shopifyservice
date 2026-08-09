@@ -71,8 +71,8 @@ export function Hero() {
             animate="show"
             className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
-            I lead every project end to end, from theme to headless to custom apps. When your store
-            needs design, SEO, or content, I bring in trusted specialists I already work with.
+            I lead every project end to end, from theme to headless to custom apps, with a small
+            team of collaborators across design, content, and development.
           </motion.p>
 
           <motion.div

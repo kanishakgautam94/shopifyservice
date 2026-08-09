@@ -5,19 +5,20 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, RevealStagger, RevealItem } from "@/components/ui/Reveal";
 import { TeamCard } from "@/components/TeamCard";
+import { CollaboratorSeatCard } from "@/components/CollaboratorSeatCard";
 import { CTASection } from "@/components/CTASection";
-import { founder, specialties } from "@/content/team";
+import { founder, collaboratorSeats } from "@/content/team";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Kanishak Gautam, a senior Shopify developer freelancing since 2015. Boutique studio delivery with trusted specialists for design, SEO, and content.",
+    "Meet Kanishak Gautam and the small collaborator team behind Shopify Service: UI/UX, content, and full-stack development.",
 };
 
 const values = [
   {
     title: "One accountable lead",
-    desc: "You work with me directly. I own the outcome and bring specialists in only when the project needs them.",
+    desc: "You work with me directly. I own the outcome and bring collaborators in when the project needs them.",
   },
   {
     title: "Revenue-obsessed",
@@ -38,8 +39,8 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="About"
-        title="A senior Shopify developer, with specialists when you need them"
-        description="Shopify Service is my boutique studio. I lead every engagement, and I bring in trusted colleagues for UI/UX, SEO, and content when a project needs a fuller team."
+        title="A senior Shopify lead, with a small team around the work"
+        description="Shopify Service is my boutique studio. I lead every engagement, and collaborators across UI/UX, content, and development join when a project needs a fuller team."
       />
 
       <section className="pb-8">
@@ -58,14 +59,13 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Shopify Service is how I bring that same senior, in-the-trenches experience to
-                  other ambitious brands. When a project needs more than development, I bring in
-                  colleagues I already trust: UI/UX, SEO, content strategy, and marketplace help,
-                  so you get a complete delivery team without juggling freelancers yourself.
+                  other ambitious brands, with a small group of collaborators I already trust across
+                  design, content, and development.
                 </p>
                 <p>
                   I work with 7 and 8-figure brands that treat their store as their most important
-                  asset. If that&apos;s you, you&apos;ll feel the difference of working with someone
-                  who genuinely owns the outcome.
+                  asset. If that&apos;s you, you&apos;ll feel the difference of working with people
+                  who genuinely own the outcome.
                 </p>
               </div>
             </Reveal>
@@ -93,26 +93,23 @@ export default function AboutPage() {
       <section className="py-20">
         <Container>
           <SectionHeading
-            eyebrow="Delivery model"
-            title="One lead. Specialists when the scope needs them."
-            description="You always talk to me. Depending on the project, I pull in colleagues for design, SEO, content, and more."
+            eyebrow="The team"
+            title="Collaborator profiles are being added"
+            description="Open seats below are intentional. As each person joins, their name, photo, and bio go live here."
             align="center"
           />
-          <div className="mx-auto mt-14 grid max-w-5xl gap-6 lg:grid-cols-[1fr_1.2fr]">
+          <div className="mx-auto mt-14 max-w-md">
             <Reveal>
               <TeamCard member={founder} />
             </Reveal>
-            <RevealStagger className="grid gap-3 sm:grid-cols-2">
-              {specialties.map((s) => (
-                <RevealItem key={s.title}>
-                  <div className="flex h-full flex-col gap-2 rounded-2xl border border-border bg-surface p-5">
-                    <p className="text-sm font-semibold text-foreground">{s.title}</p>
-                    <p className="text-sm leading-relaxed text-muted">{s.description}</p>
-                  </div>
-                </RevealItem>
-              ))}
-            </RevealStagger>
           </div>
+          <RevealStagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {collaboratorSeats.map((seat, i) => (
+              <RevealItem key={`${seat.role}-${i}`} className="h-full">
+                <CollaboratorSeatCard seat={seat} />
+              </RevealItem>
+            ))}
+          </RevealStagger>
         </Container>
       </section>
 

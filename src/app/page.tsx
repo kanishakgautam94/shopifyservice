@@ -17,13 +17,14 @@ import { ButtonLink } from "@/components/ui/Button";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { TeamCard } from "@/components/TeamCard";
+import { CollaboratorSeatCard } from "@/components/CollaboratorSeatCard";
 import { Testimonials } from "@/components/Testimonials";
 import { AISection } from "@/components/AISection";
 import { StackSection } from "@/components/StackSection";
 import { CTASection } from "@/components/CTASection";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
-import { founder, specialties } from "@/content/team";
+import { founder, collaboratorSeats } from "@/content/team";
 
 const marquee = [
   "Shopify Plus",
@@ -123,7 +124,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="What I do"
               title="Full Shopify coverage, without agency layers"
-              description="From your first theme to a headless rebuild and everything in between, led by one senior developer with specialists when you need them."
+              description="From your first theme to a headless rebuild and everything in between, led by one senior developer with a small collaborator team."
             />
             <Reveal>
               <ButtonLink href="/services" variant="secondary">
@@ -206,33 +207,30 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Founder + specialists */}
+      {/* Founder + collaborator seats */}
       <section className="border-y border-border bg-surface py-24">
         <Container>
           <SectionHeading
-            eyebrow="How delivery works"
-            title="Me, plus specialists when the project needs them"
-            description="I lead every engagement. For design, SEO, content, and larger builds, I bring in trusted colleagues so you get full coverage without managing freelancers yourself."
+            eyebrow="The team"
+            title="A small team. Real people. Profiles coming online."
+            description="I lead every engagement. Collaborators across UI/UX, content, and full-stack development join the call and deliver with me, project by project."
             align="center"
           />
-          <div className="mx-auto mt-14 grid max-w-5xl gap-6 lg:grid-cols-[1fr_1.2fr]">
+          <div className="mx-auto mt-14 max-w-md">
             <Reveal>
               <TeamCard member={founder} />
             </Reveal>
-            <RevealStagger className="grid gap-3 sm:grid-cols-2">
-              {specialties.map((s) => (
-                <RevealItem key={s.title}>
-                  <div className="flex h-full flex-col gap-2 rounded-2xl border border-border bg-background p-5">
-                    <p className="text-sm font-semibold text-foreground">{s.title}</p>
-                    <p className="text-sm leading-relaxed text-muted">{s.description}</p>
-                  </div>
-                </RevealItem>
-              ))}
-            </RevealStagger>
           </div>
+          <RevealStagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {collaboratorSeats.map((seat, i) => (
+              <RevealItem key={`${seat.role}-${i}`} className="h-full">
+                <CollaboratorSeatCard seat={seat} />
+              </RevealItem>
+            ))}
+          </RevealStagger>
           <div className="mt-10 flex justify-center">
             <ButtonLink href="/about" variant="secondary">
-              About me & collaborators <ArrowRight className="size-4" />
+              About the delivery model <ArrowRight className="size-4" />
             </ButtonLink>
           </div>
         </Container>
