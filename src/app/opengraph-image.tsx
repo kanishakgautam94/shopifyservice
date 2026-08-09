@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
 
-export const alt = `${site.name}: Hire Expert Shopify Developers`;
+export const alt = `${site.name}: Hire a Senior Shopify Developer`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -56,17 +56,17 @@ export default function OgImage() {
               maxWidth: 900,
             }}
           >
-            Expert Shopify development for brands that mean business
+            Kanishak Gautam · Senior Shopify for $1M+ brands
           </div>
           <div style={{ color: "#9aa7a2", fontSize: 30, maxWidth: 820 }}>
-            Theme · Shopify Plus · Headless Hydrogen · Custom Apps · CRO
+            Theme · Shopify Plus · Headless · Custom Apps · CRO
           </div>
         </div>
 
         <div style={{ display: "flex", gap: 40, color: "#6b7873", fontSize: 26 }}>
-          <span>700+ projects</span>
-          <span>75+ countries</span>
-          <span>10+ years</span>
+          <span>500+ projects</span>
+          <span>100+ brands</span>
+          <span>Since 2015</span>
         </div>
       </div>
     ),

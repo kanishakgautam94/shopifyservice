@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Script from "next/script";
-import { Calendar } from "lucide-react";
+import { Calendar, Mail, Phone } from "lucide-react";
 import { site } from "@/content/site";
 
 const PLACEHOLDER_CALENDLY = "https://calendly.com/shopifyservice/consultation";
@@ -10,8 +10,6 @@ const PLACEHOLDER_CALENDLY = "https://calendly.com/shopifyservice/consultation";
 export function CalendlyEmbed() {
   const [loaded, setLoaded] = useState(false);
 
-  // Only render the live widget when a real Calendly URL is configured via
-  // NEXT_PUBLIC_CALENDLY_URL (i.e. it isn't the built-in placeholder).
   const configured =
     site.calendlyUrl.startsWith("https://calendly.com/") &&
     site.calendlyUrl !== PLACEHOLDER_CALENDLY;
@@ -22,13 +20,29 @@ export function CalendlyEmbed() {
 
   if (!configured) {
     return (
-      <div className="flex h-full min-h-[420px] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-border bg-background p-8 text-center">
+      <div className="flex h-full min-h-[420px] flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-border bg-background p-8 text-center">
         <Calendar className="size-8 text-accent" />
-        <p className="font-medium text-foreground">Booking calendar</p>
-        <p className="max-w-xs text-sm text-muted">
-          Set <code className="text-accent">NEXT_PUBLIC_CALENDLY_URL</code> to embed your live
-          Calendly here. Until then, use the form or email us directly.
-        </p>
+        <div className="flex flex-col gap-1.5">
+          <p className="font-medium text-foreground">Prefer to book by email or phone?</p>
+          <p className="max-w-xs text-sm text-muted">
+            Use the form on this page, or reach me directly. I usually reply within one business
+            day.
+          </p>
+        </div>
+        <div className="flex flex-col gap-2 text-sm">
+          <a
+            href={`mailto:${site.email}`}
+            className="inline-flex items-center justify-center gap-2 text-accent hover:underline"
+          >
+            <Mail className="size-4" /> {site.email}
+          </a>
+          <a
+            href={`tel:${site.phoneHref}`}
+            className="inline-flex items-center justify-center gap-2 text-accent hover:underline"
+          >
+            <Phone className="size-4" /> {site.phone}
+          </a>
+        </div>
       </div>
     );
   }

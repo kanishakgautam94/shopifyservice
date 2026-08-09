@@ -27,7 +27,7 @@ export const services: Service[] = [
     title: "Theme Development & Customization",
     short: "Pixel-perfect, fast, on-brand storefronts built to convert.",
     description:
-      "Custom Shopify themes and deep customizations of Dawn, Prestige, Impulse and premium themes. We turn your Figma designs into fast, accessible, conversion-focused storefronts your merchandising team can actually manage.",
+      "Custom Shopify themes and deep customizations of Dawn, Prestige, Impulse and premium themes. I turn your Figma designs into fast, accessible, conversion-focused storefronts your merchandising team can actually manage.",
     deliverables: [
       "Custom theme builds from Figma",
       "Reusable, editable theme sections",
@@ -41,7 +41,7 @@ export const services: Service[] = [
     title: "Custom Shopify Apps",
     short: "Private & public apps that extend Shopify beyond the defaults.",
     description:
-      "Bespoke public and custom apps using the latest Shopify App framework, Remix, GraphQL Admin API, and app extensions. From subscriptions to bundling to custom checkout logic, we build what off-the-shelf apps can't.",
+      "Bespoke public and custom apps using the latest Shopify App framework, Remix, GraphQL Admin API, and app extensions. From subscriptions to bundling to custom checkout logic, I build what off-the-shelf apps can't.",
     deliverables: [
       "Public & custom (private) apps",
       "Checkout UI & Functions extensions",
@@ -55,7 +55,7 @@ export const services: Service[] = [
     title: "AI Agents & LLM Integrations",
     short: "Ship intelligent features and automate real work with AI.",
     description:
-      "We build AI directly into your store, not as a gimmick but as infrastructure. Checkout sales assistants, product recommendation engines, semantic search, AI-generated content at scale, and autonomous order-flow agents powered by Claude, OpenAI, and the Anthropic API. We also develop with AI daily, so you get senior-level code with materially faster turnaround.",
+      "I build AI directly into your store, not as a gimmick but as infrastructure. Checkout sales assistants, product recommendation engines, semantic search, AI-generated content at scale, and autonomous order-flow agents powered by Claude, OpenAI, and the Anthropic API. I also develop with AI daily, so you get senior-level code with materially faster turnaround.",
     deliverables: [
       "AI sales & support agents",
       "LLM content & semantic search",
@@ -97,7 +97,7 @@ export const services: Service[] = [
     title: "Replatforming & Migrations",
     short: "Move to Shopify without losing traffic, data, or sales.",
     description:
-      "Safe migrations from WooCommerce, Magento, BigCommerce, or legacy platforms to Shopify. We preserve SEO, redirect every URL, and migrate products, customers, and order history cleanly.",
+      "Safe migrations from WooCommerce, Magento, BigCommerce, or legacy platforms to Shopify. I preserve SEO, redirect every URL, and migrate products, customers, and order history cleanly.",
     deliverables: [
       "Data & catalog migration",
       "301 redirect mapping (SEO-safe)",
@@ -111,7 +111,7 @@ export const services: Service[] = [
     title: "Conversion Rate Optimization",
     short: "Data-driven experiments that lift revenue per visitor.",
     description:
-      "Structured CRO programs: audits, hypotheses, A/B testing, and analytics. We find where you leak revenue and systematically fix it, from PDPs to cart to checkout.",
+      "Structured CRO programs: audits, hypotheses, A/B testing, and analytics. I find where you leak revenue and systematically fix it, from PDPs to cart to checkout.",
     deliverables: [
       "Conversion & UX audits",
       "A/B & multivariate testing",
@@ -125,7 +125,7 @@ export const services: Service[] = [
     title: "Integrations & Automation",
     short: "Connect Shopify to your ERP, CRM, 3PL, and tools.",
     description:
-      "Reliable integrations with ERPs, CRMs, 3PLs, ESPs, and marketplaces. We automate the busywork with Flow, custom middleware, and APIs so your operations scale without more headcount.",
+      "Reliable integrations with ERPs, CRMs, 3PLs, ESPs, and marketplaces. I automate the busywork with Flow, custom middleware, and APIs so your operations scale without more headcount.",
     deliverables: [
       "ERP / CRM / 3PL integrations",
       "Klaviyo, Meta, Google, TikTok",
@@ -137,9 +137,9 @@ export const services: Service[] = [
     slug: "maintenance",
     icon: LifeBuoy,
     title: "Maintenance & Support",
-    short: "A dedicated Shopify team on retainer, whenever you need it.",
+    short: "Ongoing senior Shopify support on retainer, when you need it.",
     description:
-      "Ongoing development retainers for growing brands. Priority fixes, new features, performance monitoring, and a partner who already knows your store, with no ramp-up and no agency overhead.",
+      "Ongoing development retainers for growing brands. Priority fixes, new features, performance monitoring, and a lead developer who already knows your store, with no ramp-up and no agency overhead.",
     deliverables: [
       "Monthly development retainers",
       "Priority bug fixes & SLAs",

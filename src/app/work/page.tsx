@@ -9,9 +9,9 @@ import { CTASection } from "@/components/CTASection";
 import { projects } from "@/content/projects";
 
 export const metadata: Metadata = {
-  title: "Our Work",
+  title: "Work",
   description:
-    "Selected Shopify and Shopify Plus projects across skincare, furniture, supplements, luxury accessories, and more, delivered for brands in 75+ countries.",
+    "Selected Shopify and Shopify Plus projects across skincare, furniture, supplements, luxury accessories, and more, for brands worldwide.",
 };
 
 export default function WorkPage() {
@@ -21,9 +21,9 @@ export default function WorkPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Our work"
-        title="Stores we've built and scaled"
-        description="700+ projects delivered across 75+ countries. Here's a selection. Detailed case studies are on the way as we get sign-off from each brand."
+        eyebrow="Selected work"
+        title="Stores I've built and scaled"
+        description="500+ Shopify projects since 2015. Here's a selection. Detailed case studies are on the way as I get sign-off from each brand."
       />
 
       {featured && (
@@ -82,7 +82,7 @@ export default function WorkPage() {
 
       <section className="py-16">
         <Container>
-          <SectionHeading eyebrow="More projects" title="A cross-section of brands we serve" />
+          <SectionHeading eyebrow="More projects" title="A cross-section of brands I serve" />
           <RevealStagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((project) => (
               <RevealItem key={project.slug} className="h-full">

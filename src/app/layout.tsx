@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { MetaPixel } from "@/components/MetaPixel";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -30,7 +31,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}: Hire Expert Shopify Developers`,
+    default: `${site.name}: Hire a Senior Shopify Developer`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -43,19 +44,19 @@ export const metadata: Metadata = {
     "headless Shopify Hydrogen",
     "Shopify app development",
   ],
-  authors: [{ name: site.name }],
-  creator: site.name,
+  authors: [{ name: "Kanishak Gautam" }],
+  creator: "Kanishak Gautam",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: `${site.name}: Hire Expert Shopify Developers`,
+    title: `${site.name}: Hire a Senior Shopify Developer`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name}: Hire Expert Shopify Developers`,
+    title: `${site.name}: Hire a Senior Shopify Developer`,
     description: site.description,
   },
   robots: {
@@ -92,6 +93,7 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <GoogleAnalytics />
+        <MetaPixel />
       </body>
     </html>
   );

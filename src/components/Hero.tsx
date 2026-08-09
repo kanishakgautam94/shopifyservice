@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { CountUp } from "@/components/ui/CountUp";
@@ -48,12 +48,8 @@ export function Hero() {
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <motion.div custom={0} variants={fade} initial="hidden" animate="show">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-muted">
-              <span className="flex -space-x-0.5 text-accent">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-3.5 fill-current" />
-                ))}
-              </span>
-              700+ projects across 75+ countries
+              <span className="size-1.5 rounded-full bg-accent" />
+              500+ Shopify projects · freelancing since 2015
             </span>
           </motion.div>
 
@@ -64,8 +60,8 @@ export function Hero() {
             animate="show"
             className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            <span className="text-gradient">Expert Shopify development for</span>{" "}
-            <span className="text-gradient-accent">brands that mean business</span>
+            <span className="text-gradient">I&apos;m Kanishak.</span>{" "}
+            <span className="text-gradient-accent">Senior Shopify for $1M+ brands.</span>
           </motion.h1>
 
           <motion.p
@@ -75,8 +71,8 @@ export function Hero() {
             animate="show"
             className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
-            We design, build, and scale high-converting Shopify and Shopify Plus stores. A senior
-            developer and a hand-picked team, working end to end from theme to headless to custom apps.
+            I lead every project end to end, from theme to headless to custom apps. When your store
+            needs design, SEO, or content, I bring in trusted specialists I already work with.
           </motion.p>
 
           <motion.div
@@ -90,7 +86,7 @@ export function Hero() {
               Book a free consultation <ArrowRight className="size-5" />
             </ButtonLink>
             <ButtonLink href="/work" variant="secondary" size="lg">
-              See our work
+              See the work
             </ButtonLink>
           </motion.div>
         </div>

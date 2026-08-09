@@ -9,10 +9,10 @@ export const contactSchema = z.object({
   message: z
     .string()
     .trim()
-    .min(10, "Tell us a little more (at least 10 characters)")
+    .min(10, "Tell me a little more (at least 10 characters)")
     .max(4000),
-  // Honeypot: must stay empty. Bots tend to fill every field.
-  company_url: z.string().max(0).optional(),
+  // Honeypot: bots tend to fill every field. Any value is silently dropped in the action.
+  company_url: z.string().optional().or(z.literal("")),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

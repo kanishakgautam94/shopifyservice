@@ -10,7 +10,7 @@ export function StackSection() {
         <SectionHeading
           eyebrow="The full toolkit"
           title="A stack that scales with your store"
-          description="Deep expertise across the entire modern Shopify stack, so we can architect the right solution, not just the one we happen to know."
+          description="Deep expertise across the entire modern Shopify stack, so I can architect the right solution, not just the one I happen to know."
           align="center"
         />
 

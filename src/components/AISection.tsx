@@ -21,7 +21,7 @@ const capabilities = [
     icon: Gauge,
     n: "03",
     title: "AI-accelerated delivery",
-    desc: "We build with Claude Code and Cursor every day. Same senior-level code quality with materially faster turnaround. Your project ships in weeks, not quarters.",
+    desc: "I build with Claude Code and Cursor every day. Same senior-level code quality with materially faster turnaround. Your project ships in weeks, not quarters.",
   },
 ];
 
@@ -32,7 +32,7 @@ const terminalLines = [
   { text: "✓ cart context loaded (3 items)", type: "ok" },
   { text: "✓ upsell generated: +1 matching bench", type: "ok" },
   { text: "✓ objection handled: shipping ETA", type: "ok" },
-  { text: "// AOV +18% in A/B test", type: "comment" },
+  { text: "// ready for A/B test", type: "comment" },
 ] as const;
 
 export function AISection() {
@@ -41,8 +41,8 @@ export function AISection() {
       <Container>
         <SectionHeading
           eyebrow="AI-powered development"
-          title="We ship with AI, and we build with it too"
-          description="AI is core infrastructure in how we work and what we deliver: faster builds for you, and intelligent features wired directly into your store."
+          title="I ship with AI, and I build with it too"
+          description="AI is core infrastructure in how I work and what I deliver: faster builds for you, and intelligent features wired directly into your store."
         />
 
         <div className="mt-14 grid items-center gap-10 lg:grid-cols-2">

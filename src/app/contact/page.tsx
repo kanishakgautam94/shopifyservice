@@ -25,16 +25,16 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Book your free consultation"
-        description="Tell us about your store and goals. We'll review it and get back to you with senior, honest advice, usually within one business day."
+        description="Tell me about your store and goals. I'll review it and get back to you with senior, honest advice, usually within one business day."
       />
 
       <section className="pb-24">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="rounded-3xl border border-border bg-surface p-8 md:p-10">
-              <h2 className="text-xl font-semibold text-foreground">Send us a message</h2>
+              <h2 className="text-xl font-semibold text-foreground">Send a message</h2>
               <p className="mt-1.5 text-sm text-muted">
-                The more detail you share, the more useful our first reply will be.
+                The more detail you share, the more useful my first reply will be.
               </p>
               <div className="mt-8">
                 <ContactForm />

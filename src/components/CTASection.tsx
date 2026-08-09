@@ -16,7 +16,7 @@ export function CTASection() {
                 Let&apos;s turn your Shopify store into your best salesperson
               </h2>
               <p className="text-pretty text-lg text-muted">
-                Book a free 30-minute consultation and get a live audit of your store. No
+                Book a free 30-minute consultation with me and get a live audit of your store. No
                 pressure, no obligation, just senior advice you can use.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">

@@ -23,8 +23,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-muted">
-              End-to-end Shopify development for ambitious 7 and 8-figure brands. Design, build,
-              and scale, with a senior team you can trust.
+              End-to-end Shopify development for ambitious 7 and 8-figure brands. Led by a senior
+              developer, with trusted specialists brought in when your project needs them.
             </p>
             <div className="mt-2 flex flex-col gap-2 text-sm text-muted">
               <a href={`mailto:${site.email}`} className="flex items-center gap-2 transition-colors hover:text-accent">
@@ -57,8 +57,8 @@ export function Footer() {
 
           <FooterCol title="Get started">
             <FooterLink href="/contact">Book a free call</FooterLink>
-            <FooterLink href="/work">See our work</FooterLink>
-            <FooterLink href="/about">Meet the team</FooterLink>
+            <FooterLink href="/work">See the work</FooterLink>
+            <FooterLink href="/about">About & collaborators</FooterLink>
             <FooterLink href="/blog">Read the blog</FooterLink>
           </FooterCol>
         </div>
@@ -67,7 +67,13 @@ export function Footer() {
           <p>
             © {year} {site.legalName}. All rights reserved.
           </p>
-          <p>Built with Next.js · Deployed on Vercel</p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="transition-colors hover:text-accent">
+              Privacy Policy
+            </Link>
+            <span className="text-border">·</span>
+            <p>Built with Next.js · Deployed on Vercel</p>
+          </div>
         </div>
       </Container>
     </footer>

@@ -51,23 +51,30 @@ export async function submitContact(
 
   // Honeypot triggered: silently accept without sending.
   if (data.company_url && data.company_url.length > 0) {
-    return { status: "success", message: "Thanks! We'll be in touch shortly." };
+    return { status: "success", message: "Thanks! I'll be in touch shortly." };
   }
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL ?? site.email;
-  const from = process.env.CONTACT_FROM_EMAIL ?? "Shopify Service <onboarding@resend.dev>";
+  const from = process.env.CONTACT_FROM_EMAIL;
 
   if (!apiKey) {
-    // Fail gracefully in dev / before env is configured, but log for visibility.
-    console.warn("[contact] RESEND_API_KEY not set, logging submission instead:", {
+    console.error("[contact] RESEND_API_KEY is not set. Lead was NOT emailed:", {
       name: data.name,
       email: data.email,
       company: data.company,
     });
     return {
-      status: "success",
-      message: "Thanks! We'll be in touch shortly.",
+      status: "error",
+      message: `Email delivery is temporarily unavailable. Please email me directly at ${site.email}.`,
+    };
+  }
+
+  if (!from) {
+    console.error("[contact] CONTACT_FROM_EMAIL is not set.");
+    return {
+      status: "error",
+      message: `Email delivery is temporarily unavailable. Please email me directly at ${site.email}.`,
     };
   }
 
@@ -94,16 +101,16 @@ export async function submitContact(
       console.error("[contact] Resend error:", error);
       return {
         status: "error",
-        message: "Something went wrong sending your message. Please email us directly.",
+        message: `Something went wrong sending your message. Please email me directly at ${site.email}.`,
       };
     }
 
-    return { status: "success", message: "Thanks! We'll be in touch within 1 business day." };
+    return { status: "success", message: "Thanks! I'll be in touch within 1 business day." };
   } catch (err) {
     console.error("[contact] Unexpected error:", err);
     return {
       status: "error",
-      message: "Something went wrong. Please email us directly at " + site.email + ".",
+      message: `Something went wrong. Please email me directly at ${site.email}.`,
     };
   }
 }

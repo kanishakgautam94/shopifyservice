@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="End-to-end Shopify, done right"
-        description="Whatever your store needs, from a fast custom theme to a headless rebuild or a bespoke app, we cover the entire Shopify ecosystem with senior expertise."
+        description="Whatever your store needs, from a fast custom theme to a headless rebuild or a bespoke app, I cover the Shopify ecosystem end to end and bring in specialists when the scope calls for it."
       />
 
       <section className="pb-24">

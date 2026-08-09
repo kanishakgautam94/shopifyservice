@@ -5,13 +5,15 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealStagger, RevealItem } from "@/components/ui/Reveal";
 
 export function Testimonials() {
+  if (testimonials.length === 0) return null;
+
   return (
     <section className="py-24">
       <Container>
         <SectionHeading
           eyebrow="Client love"
-          title="Brands that trust us keep coming back"
-          description="We measure success in revenue, retention, and referrals, not just launches."
+          title="What clients say"
+          description="I measure success in revenue, retention, and referrals, not just launches."
           align="center"
         />
 

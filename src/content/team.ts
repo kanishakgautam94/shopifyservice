@@ -7,42 +7,46 @@ export type TeamMember = {
   initials: string;
 };
 
-// NOTE: Placeholder team. Swap names, bios, and add photos to /public/team.
-export const team: TeamMember[] = [
+export type CollaboratorSpecialty = {
+  title: string;
+  description: string;
+};
+
+export const founder: TeamMember = {
+  name: "Kanishak Gautam",
+  role: "Founder & Lead Shopify Developer",
+  bio: "Shopify freelancing since 2015. Currently a developer and dev lead at Transformer Table, which grew from $50M to $150M during my time there. I lead every engagement end to end.",
+  initials: "KG",
+};
+
+/** Roles I pull in by project. Swap in real names + photos when colleagues approve. */
+export const specialties: CollaboratorSpecialty[] = [
   {
-    name: "Kanishak Gautam",
-    role: "Founder & Lead Shopify Developer",
-    bio: "10+ years building Shopify. Currently a developer and dev lead at Transformer Table, which grew from $50M to $150M during my time there. I lead every engagement end to end.",
-    initials: "KG",
+    title: "UI/UX Design",
+    description:
+      "Conversion-focused ecommerce design and Figma systems that ship cleanly into Shopify.",
   },
   {
-    name: "Senior Frontend Developer",
-    role: "Theme & Storefront Engineer",
-    bio: "Liquid, React, and Hydrogen specialist focused on pixel-perfect, high-performance storefronts and Core Web Vitals.",
-    initials: "FD",
+    title: "SEO",
+    description:
+      "Technical SEO, migrations, and organic growth so rankings stay intact through rebuilds.",
   },
   {
-    name: "Product Designer",
-    role: "UI/UX & Brand",
-    bio: "Conversion-focused ecommerce designer. Turns brand strategy into Figma systems that developers can ship fast.",
-    initials: "UX",
+    title: "Content Strategy",
+    description:
+      "Product copy, landing pages, and the content engine behind organic and paid campaigns.",
   },
   {
-    name: "SEO Strategist",
-    role: "Technical & Content SEO",
-    bio: "Owns technical SEO, migrations, and content strategy, keeping rankings intact through replatforms and driving organic growth.",
-    initials: "SE",
+    title: "Additional Development",
+    description:
+      "Extra senior hands on Liquid, React, or Hydrogen when a build needs more capacity.",
   },
   {
-    name: "Growth & Content Writer",
-    role: "Ecommerce Copy & Content",
-    bio: "Writes product, landing page, and email copy that sells, plus the content engine behind your organic and paid campaigns.",
-    initials: "CW",
-  },
-  {
-    name: "Amazon & Marketplace Specialist",
-    role: "Marketplace Growth",
-    bio: "Manages Amazon and multi-marketplace expansion, listings, and Shopify-to-marketplace sync for omnichannel brands.",
-    initials: "AM",
+    title: "Amazon & Marketplaces",
+    description:
+      "Marketplace expansion and Shopify-to-marketplace sync when brands go omnichannel.",
   },
 ];
+
+/** @deprecated Prefer founder + specialties. Kept for any remaining TeamCard previews. */
+export const team: TeamMember[] = [founder];

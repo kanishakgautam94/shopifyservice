@@ -3,9 +3,9 @@ export const site = {
   legalName: "Shopifyservice",
   domain: "shopifyservice.com",
   url: "https://shopifyservice.com",
-  tagline: "End-to-end Shopify development for ambitious brands",
+  tagline: "Senior Shopify development, led by the person who builds it",
   description:
-    "Shopify Service is a specialist Shopify studio led by a senior developer and a hand-picked team. We design, build, and scale high-converting Shopify and Shopify Plus stores for 7 and 8-figure brands.",
+    "Shopify Service is a boutique Shopify studio led by senior developer Kanishak Gautam. I design, build, and scale high-converting Shopify and Shopify Plus stores for 7 and 8-figure brands, bringing in trusted specialists for design, SEO, and content when your project needs them.",
   email: "info@shopifyservice.com",
   phone: "+1 (437) 234-1184",
   phoneHref: "+14372341184",
@@ -30,8 +30,8 @@ export const nav = [
 ] as const;
 
 export const stats = [
-  { value: "700+", label: "Projects delivered" },
-  { value: "75+", label: "Countries served" },
-  { value: "$150M", label: "Brand we helped scale" },
+  { value: "500+", label: "Projects delivered" },
+  { value: "100+", label: "Brands worked with" },
+  { value: "$150M", label: "Brand I helped scale" },
   { value: "10+", label: "Years of Shopify" },
 ] as const;

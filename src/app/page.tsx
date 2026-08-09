@@ -23,7 +23,7 @@ import { StackSection } from "@/components/StackSection";
 import { CTASection } from "@/components/CTASection";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
-import { team } from "@/content/team";
+import { founder, specialties } from "@/content/team";
 
 const marquee = [
   "Shopify Plus",
@@ -39,7 +39,7 @@ const marquee = [
 ];
 
 const trust = [
-  { icon: UserCheck, label: "Senior-only team", desc: "No juniors on your project" },
+  { icon: UserCheck, label: "You work with me", desc: "One lead, clear ownership" },
   { icon: ShieldCheck, label: "NDA-friendly", desc: "Your data stays private" },
   { icon: FileCheck2, label: "Fixed-scope quotes", desc: "No surprise invoices" },
   { icon: Gauge, label: "Speed-obsessed", desc: "Core Web Vitals by default" },
@@ -49,12 +49,12 @@ const process = [
   {
     icon: Search,
     title: "Discover",
-    desc: "We audit your store, understand your goals, and map the highest-impact opportunities.",
+    desc: "I audit your store, understand your goals, and map the highest-impact opportunities.",
   },
   {
     icon: PenTool,
     title: "Design",
-    desc: "Conversion-focused UX and on-brand design your customers and merchandisers will love.",
+    desc: "Conversion-focused UX and on-brand design, with a design collaborator when the project needs it.",
   },
   {
     icon: Code2,
@@ -121,9 +121,9 @@ export default function HomePage() {
         <Container>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
-              eyebrow="What we do"
-              title="Everything Shopify, under one roof"
-              description="From your first theme to a headless rebuild and everything in between, all from one senior team."
+              eyebrow="What I do"
+              title="Full Shopify coverage, without agency layers"
+              description="From your first theme to a headless rebuild and everything in between, led by one senior developer with specialists when you need them."
             />
             <Reveal>
               <ButtonLink href="/services" variant="secondary">
@@ -153,9 +153,9 @@ export default function HomePage() {
       <section className="border-y border-border bg-surface py-24">
         <Container>
           <SectionHeading
-            eyebrow="How we work"
-            title="A proven process, minus the agency overhead"
-            description="You work directly with senior people. No account managers, no telephone game, just clear communication and results."
+            eyebrow="How I work"
+            title="A proven process, without the agency bloat"
+            description="You work directly with me. No account managers, no telephone game, just clear communication and results."
             align="center"
           />
           <RevealStagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -187,7 +187,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Selected work"
               title="Results for real, growing brands"
-              description="A snapshot of the stores we've helped build and scale across the world."
+              description="A snapshot of the stores I've helped build and scale across the world."
             />
             <Reveal>
               <ButtonLink href="/work" variant="secondary">
@@ -206,25 +206,33 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Team preview */}
+      {/* Founder + specialists */}
       <section className="border-y border-border bg-surface py-24">
         <Container>
           <SectionHeading
-            eyebrow="The team"
-            title="Senior people who own the outcome"
-            description="Led by the founder, backed by a hand-picked network of specialists across design, development, SEO, content, and marketplaces."
+            eyebrow="How delivery works"
+            title="Me, plus specialists when the project needs them"
+            description="I lead every engagement. For design, SEO, content, and larger builds, I bring in trusted colleagues so you get full coverage without managing freelancers yourself."
             align="center"
           />
-          <RevealStagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {team.slice(0, 3).map((member) => (
-              <RevealItem key={member.name} className="h-full">
-                <TeamCard member={member} />
-              </RevealItem>
-            ))}
-          </RevealStagger>
+          <div className="mx-auto mt-14 grid max-w-5xl gap-6 lg:grid-cols-[1fr_1.2fr]">
+            <Reveal>
+              <TeamCard member={founder} />
+            </Reveal>
+            <RevealStagger className="grid gap-3 sm:grid-cols-2">
+              {specialties.map((s) => (
+                <RevealItem key={s.title}>
+                  <div className="flex h-full flex-col gap-2 rounded-2xl border border-border bg-background p-5">
+                    <p className="text-sm font-semibold text-foreground">{s.title}</p>
+                    <p className="text-sm leading-relaxed text-muted">{s.description}</p>
+                  </div>
+                </RevealItem>
+              ))}
+            </RevealStagger>
+          </div>
           <div className="mt-10 flex justify-center">
             <ButtonLink href="/about" variant="secondary">
-              Meet the whole team <ArrowRight className="size-4" />
+              About me & collaborators <ArrowRight className="size-4" />
             </ButtonLink>
           </div>
         </Container>

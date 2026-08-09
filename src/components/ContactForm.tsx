@@ -107,13 +107,13 @@ export function ContactForm() {
         </select>
       </Field>
 
-      <Field label="How can we help? *" name="message" error={state.errors?.message}>
+      <Field label="How can I help? *" name="message" error={state.errors?.message}>
         <textarea
           id="message"
           name="message"
           required
           rows={5}
-          placeholder="Tell us about your store, your goals, and what you're looking for…"
+          placeholder="Tell me about your store, your goals, and what you're looking for…"
           className={cn(inputClass, "resize-y")}
         />
       </Field>
@@ -125,8 +125,14 @@ export function ContactForm() {
         </div>
       )}
 
-      <div className="flex items-center justify-between gap-4 pt-1">
-        <p className="text-xs text-muted-2">We reply within 1 business day.</p>
+      <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs text-muted-2">
+          I reply within 1 business day. By submitting, you agree to the{" "}
+          <a href="/privacy" className="text-accent hover:underline">
+            Privacy Policy
+          </a>
+          .
+        </p>
         <SubmitButton />
       </div>
     </form>

@@ -10,8 +10,7 @@ export type Project = {
   featured?: boolean;
 };
 
-// NOTE: Placeholder case studies inspired by past work. Replace with real,
-// detailed case studies (with permission) as they're ready.
+// Real client work. Deepen case studies (with permission) as they're ready.
 export const projects: Project[] = [
   {
     slug: "transformer-table",
@@ -29,7 +28,7 @@ export const projects: Project[] = [
     name: "Amazology",
     category: "Theme · Men's Skincare",
     summary:
-      "Restorative hair & skincare for men with natural ingredients from the Amazon Rainforest. Custom storefront and brand experience.",
+      "Custom Shopify storefront and brand experience for men's restorative hair and skincare.",
     result: "Custom brand storefront",
     tags: ["Theme Dev", "Branding", "CRO"],
     accent: "#8b5cf6",
@@ -39,8 +38,8 @@ export const projects: Project[] = [
     name: "bioClarity",
     category: "Theme · Skincare",
     summary:
-      "Plant-based skincare with signature Floralux®. Conversion-focused storefront for a vegan, cruelty-free brand.",
-    result: "Conversion-focused rebuild",
+      "Conversion-focused Shopify storefront work for a vegan, plant-based skincare brand.",
+    result: "Conversion-focused storefront",
     tags: ["Theme Dev", "CRO", "Subscriptions"],
     accent: "#22d3ee",
   },
@@ -49,7 +48,7 @@ export const projects: Project[] = [
     name: "Bling My Thing",
     category: "Theme · Luxury Accessories",
     summary:
-      "Luxury Swarovski® crystal iPhone cases from Berlin. Premium, fashion-forward storefront for a family-owned brand.",
+      "Premium Shopify storefront work for a luxury Swarovski crystal accessories brand.",
     result: "Premium storefront",
     tags: ["Theme Dev", "Luxury UX"],
     accent: "#f472b6",
@@ -59,9 +58,9 @@ export const projects: Project[] = [
     name: "Healtholicious",
     category: "Theme · Keto & Organic",
     summary:
-      "One-stop keto shop in Bangkok with same-day delivery. Complex catalog and localized storefront experience.",
-    result: "Localized catalog store",
-    tags: ["Theme Dev", "Integrations"],
+      "Shopify optimization and conversion-focused development for a keto and organic shop with a complex catalog.",
+    result: "Conversion-oriented Shopify work",
+    tags: ["Theme Dev", "CRO", "Integrations"],
     accent: "#facc15",
   },
   {
@@ -69,9 +68,9 @@ export const projects: Project[] = [
     name: "Athletic Greens",
     category: "Theme · Supplements",
     summary:
-      "Whole food supplement brand. High-trust, subscription-driven storefront built for scale.",
-    result: "Subscription-driven store",
-    tags: ["Subscriptions", "CRO"],
+      "Shopify theme and storefront work for a subscription-driven supplements brand.",
+    result: "Theme & storefront work",
+    tags: ["Theme Dev", "Subscriptions"],
     accent: "#4ade80",
   },
 ];

@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/services", "/work", "/about", "/blog", "/contact"].map(
+  const routes = ["", "/services", "/work", "/about", "/blog", "/contact", "/privacy"].map(
     (path) => ({
       url: `${site.url}${path}`,
       lastModified: new Date(),

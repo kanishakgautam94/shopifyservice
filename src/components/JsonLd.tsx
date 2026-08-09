@@ -12,6 +12,11 @@ export function JsonLd() {
     telephone: site.phone,
     description: site.description,
     areaServed: "Worldwide",
+    founder: {
+      "@type": "Person",
+      name: "Kanishak Gautam",
+      jobTitle: "Founder & Lead Shopify Developer",
+    },
     knowsAbout: [
       "Shopify",
       "Shopify Plus",
