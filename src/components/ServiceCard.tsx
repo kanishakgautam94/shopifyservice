@@ -11,9 +11,9 @@ export function ServiceCard({ service }: { service: Service }) {
     >
       <div className="flex items-center justify-between">
         <span className="flex size-12 items-center justify-center rounded-xl bg-accent-soft text-accent ring-1 ring-inset ring-accent/20 transition-transform duration-300 group-hover:scale-110">
-          <Icon className="size-6" />
+          <Icon className="size-6" aria-hidden />
         </span>
-        <ArrowUpRight className="size-5 text-muted-2 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+        <ArrowUpRight className="size-5 text-muted-2 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" aria-hidden />
       </div>
       <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
       <p className="text-sm leading-relaxed text-muted">{service.short}</p>

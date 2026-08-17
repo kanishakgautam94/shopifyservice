@@ -83,7 +83,7 @@ export function Hero() {
             className="mt-9 flex flex-col gap-3 sm:flex-row"
           >
             <ButtonLink href="/contact" size="lg">
-              Book a free consultation <ArrowRight className="size-5" />
+              Book a free call <ArrowRight className="size-5" aria-hidden />
             </ButtonLink>
             <ButtonLink href="/work" variant="secondary" size="lg">
               See the work

@@ -8,9 +8,9 @@
   --color-surface-2: #141d2e;
   --color-border: #1f2a3d;
   --color-foreground: #eef2f6;
-  --color-muted: #94a3b8;
-  /* #7f8c9e ~= 5.7:1 on the background, keeping small secondary text WCAG AA compliant */
-  --color-muted-2: #7f8c9e;
+  --color-muted: #a8b4c4;
+  /* Secondary text: meets WCAG AA (~4.5:1+) on both background and surface */
+  --color-muted-2: #9aa8b8;
 
   --color-secondary: #334155;
 

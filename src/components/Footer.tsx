@@ -28,13 +28,13 @@ export function Footer() {
             </p>
             <div className="mt-2 flex flex-col gap-2 text-sm text-muted">
               <a href={`mailto:${site.email}`} className="flex items-center gap-2 transition-colors hover:text-accent">
-                <Mail className="size-4" /> {site.email}
+                <Mail className="size-4" aria-hidden /> {site.email}
               </a>
               <a href={`tel:${site.phoneHref}`} className="flex items-center gap-2 transition-colors hover:text-accent">
-                <Phone className="size-4" /> {site.phone}
+                <Phone className="size-4" aria-hidden /> {site.phone}
               </a>
               <span className="flex items-center gap-2">
-                <MapPin className="size-4" /> {site.location}
+                <MapPin className="size-4" aria-hidden /> {site.location}
               </span>
             </div>
           </div>
@@ -45,6 +45,8 @@ export function Footer() {
                 {item.label}
               </FooterLink>
             ))}
+            <FooterLink href="/contact">Contact</FooterLink>
+            <FooterLink href="/privacy">Privacy Policy</FooterLink>
           </FooterCol>
 
           <FooterCol title="Services">
@@ -63,17 +65,11 @@ export function Footer() {
           </FooterCol>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-2 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted sm:flex-row">
           <p>
             © {year} {site.legalName}. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
-            <Link href="/privacy" className="transition-colors hover:text-accent">
-              Privacy Policy
-            </Link>
-            <span className="text-border">·</span>
-            <p>Built with Next.js · Deployed on Vercel</p>
-          </div>
+          <p>Built with Next.js · Deployed on Vercel</p>
         </div>
       </Container>
     </footer>
@@ -89,7 +85,7 @@ function FooterCol({
 }) {
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-2">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
         {title}
       </h3>
       <div className="flex flex-col gap-2.5">{children}</div>

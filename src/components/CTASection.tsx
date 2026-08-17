@@ -21,10 +21,10 @@ export function CTASection() {
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href="/contact" size="lg">
-                  Book a free call <ArrowRight className="size-5" />
+                  Book a free call <ArrowRight className="size-5" aria-hidden />
                 </ButtonLink>
                 <ButtonLink href={`tel:${site.phoneHref}`} variant="secondary" size="lg">
-                  <Phone className="size-5" /> {site.phone}
+                  <Phone className="size-5" aria-hidden /> {site.phone}
                 </ButtonLink>
               </div>
             </div>
