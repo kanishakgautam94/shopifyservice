@@ -2,6 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useRef, type ReactNode } from "react";
+import { useMotionEnabled } from "@/hooks/useMotionEnabled";
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
@@ -22,15 +23,23 @@ export function Reveal({
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const motionOk = useMotionEnabled();
   const inView = useInView(ref, { once: true, amount: 0.2 });
+
+  // Sync mark during render so iOS bounce can't replay before useEffect runs.
+  if (inView) played.add(id);
+
   const alreadyPlayed = played.has(id);
+  const show = !motionOk || alreadyPlayed || !!reduce;
+  const offset = reduce || !motionOk ? 0 : y;
 
-  useEffect(() => {
-    if (inView) played.add(id);
-  }, [inView, id]);
-
-  const show = alreadyPlayed || inView || !!reduce;
-  const offset = reduce ? 0 : y;
+  if (!motionOk) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -54,14 +63,21 @@ export function RevealStagger({
 }) {
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
+  const motionOk = useMotionEnabled();
   const inView = useInView(ref, { once: true, amount: 0.12 });
+
+  if (inView) played.add(id);
+
   const alreadyPlayed = played.has(id);
+  const show = !motionOk || alreadyPlayed;
 
-  useEffect(() => {
-    if (inView) played.add(id);
-  }, [inView, id]);
-
-  const show = alreadyPlayed || inView;
+  if (!motionOk) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -92,6 +108,11 @@ export function RevealItem({
   className?: string;
 }) {
   const reduce = useReducedMotion();
+  const motionOk = useMotionEnabled();
+
+  if (!motionOk) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

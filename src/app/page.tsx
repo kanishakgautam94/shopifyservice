@@ -76,25 +76,26 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Trust marquee — two identical tracks for a seamless loop */}
-      <section className="border-y border-border bg-surface py-6" aria-hidden>
-        <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          {[0, 1].map((copy) => (
-            <div
-              key={copy}
-              className="flex shrink-0 animate-marquee items-center gap-10 pr-10"
-            >
-              {marquee.map((item) => (
-                <span
-                  key={`${copy}-${item}`}
-                  className="whitespace-nowrap text-sm font-medium uppercase tracking-wider text-muted-2"
-                >
-                  {item}
-                  <span className="ml-10 text-accent/40">/</span>
-                </span>
-              ))}
-            </div>
-          ))}
+      {/* Trust marquee — desktop scroll; static wrap on iPhone */}
+      <section className="border-y border-border bg-surface py-6" aria-label="Capabilities">
+        <div className="relative overflow-hidden md:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="marquee-track">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="marquee-group" data-copy={copy}>
+                {marquee.map((item) => (
+                  <span
+                    key={`${copy}-${item}`}
+                    className="whitespace-nowrap text-sm font-medium uppercase tracking-wider text-muted-2"
+                  >
+                    {item}
+                    <span className="ml-10 text-accent/40 md:inline max-md:ml-0 max-md:hidden">
+                      /
+                    </span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

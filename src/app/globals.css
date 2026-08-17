@@ -143,20 +143,54 @@ label[for] {
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-.animate-marquee {
-  animation: marquee 55s linear infinite;
-  will-change: transform;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 70s linear infinite;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+@media (max-width: 767px) {
+  /* iPhone: static wrap avoids Safari transform/mask overlap bugs */
+  .marquee-track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    animation: none;
+    row-gap: 0.75rem;
+    column-gap: 1.25rem;
+    padding-inline: 1rem;
+  }
+
+  .marquee-group {
+    display: contents;
+  }
+
+  .marquee-group[data-copy="1"] {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
+  .marquee-track {
     animation: none;
   }
 }
