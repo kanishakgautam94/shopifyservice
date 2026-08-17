@@ -46,7 +46,6 @@ export function Footer() {
               </FooterLink>
             ))}
             <FooterLink href="/contact">Contact</FooterLink>
-            <FooterLink href="/privacy">Privacy Policy</FooterLink>
           </FooterCol>
 
           <FooterCol title="Services">
@@ -69,7 +68,9 @@ export function Footer() {
           <p>
             © {year} {site.legalName}. All rights reserved.
           </p>
-          <p>Built with Next.js · Deployed on Vercel</p>
+          <Link href="/privacy" className="transition-colors hover:text-accent">
+            Privacy Policy
+          </Link>
         </div>
       </Container>
     </footer>
