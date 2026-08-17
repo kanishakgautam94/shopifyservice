@@ -1,22 +1,21 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  /* Trust & Authority palette: slate/navy-tinted cinematic dark base
-     (avoids pure #000 per design-system guidance) with an emerald brand accent. */
-  --color-background: #070b14;
-  --color-surface: #0d1420;
-  --color-surface-2: #141d2e;
-  --color-border: #1f2a3d;
-  --color-foreground: #eef2f6;
-  --color-muted: #a8b4c4;
-  /* Secondary text: meets WCAG AA (~4.5:1+) on both background and surface */
-  --color-muted-2: #9aa8b8;
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
 
-  --color-secondary: #334155;
+  --color-secondary: var(--secondary);
 
-  --color-accent: #37e17f;
-  --color-accent-dark: #14b85c;
-  --color-accent-soft: #0c2a1b;
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-soft: var(--accent-soft);
 
   --font-heading: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
@@ -25,18 +24,44 @@
   --radius-xl: 1.25rem;
   --radius-2xl: 1.75rem;
 
-  --shadow-glow: 0 0 60px -15px rgba(55, 225, 127, 0.45);
+  --shadow-glow: 0 0 60px -15px color-mix(in srgb, var(--accent) 45%, transparent);
 
-  /* Expo-out easing from the design system (Bezier 0.16,1,0.3,1) */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Default = dark brand theme (matches defaultTheme="dark") */
 :root {
+  --background: #070b14;
+  --surface: #0d1420;
+  --surface-2: #141d2e;
+  --border: #1f2a3d;
+  --foreground: #eef2f6;
+  --muted: #a8b4c4;
+  --muted-2: #9aa8b8;
+  --secondary: #334155;
+  --accent: #37e17f;
+  --accent-dark: #14b85c;
+  --accent-soft: #0c2a1b;
   color-scheme: dark;
 }
 
+.light {
+  --background: #f4f7fb;
+  --surface: #ffffff;
+  --surface-2: #e8eef6;
+  --border: #cfd8e6;
+  --foreground: #0f172a;
+  --muted: #475569;
+  --muted-2: #64748b;
+  --secondary: #94a3b8;
+  --accent: #0d9f56;
+  --accent-dark: #0a7a42;
+  --accent-soft: #e5f7ed;
+  color-scheme: light;
+}
+
 * {
-  border-color: var(--color-border);
+  border-color: var(--border);
 }
 
 html {
@@ -44,8 +69,8 @@ html {
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -61,7 +86,6 @@ h6 {
   letter-spacing: -0.02em;
 }
 
-/* Every interactive element should signal clickability (design-system checklist) */
 button,
 a,
 [role="button"],
@@ -70,57 +94,53 @@ label[for] {
   cursor: pointer;
 }
 
-/* Visible keyboard focus for all interactive elements (WCAG 2.4.7) */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 ::selection {
-  background-color: rgba(55, 225, 127, 0.25);
-  color: #ffffff;
+  background-color: color-mix(in srgb, var(--accent) 28%, transparent);
+  color: var(--foreground);
 }
 
-/* Subtle grid / glow background helpers */
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in srgb, var(--foreground) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--foreground) 6%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
 .bg-radial-accent {
   background-image: radial-gradient(
     ellipse 60% 50% at 50% -10%,
-    rgba(55, 225, 127, 0.18),
+    color-mix(in srgb, var(--accent) 18%, transparent),
     transparent 70%
   );
 }
 
-/* Frosted glass surface (Modern Dark / glassmorphism style) */
 .glass {
-  background-color: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  background-color: color-mix(in srgb, var(--surface) 78%, transparent);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
 }
 
 .text-gradient {
-  background: linear-gradient(180deg, #ffffff 0%, #c1ccd8 100%);
+  background: linear-gradient(180deg, var(--foreground) 0%, var(--muted) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .text-gradient-accent {
-  background: linear-gradient(120deg, #37e17f 0%, #7af0b0 100%);
+  background: linear-gradient(120deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 55%, white) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Marquee animation for trust bar */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -144,36 +164,34 @@ label[for] {
 
 .card-hover:hover {
   transform: translateY(-4px);
-  border-color: rgba(55, 225, 127, 0.4);
-  box-shadow: 0 18px 50px -22px rgba(0, 0, 0, 0.75);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 18px 50px -22px color-mix(in srgb, var(--foreground) 28%, transparent);
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: var(--border);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted-2);
+  background: var(--muted-2);
 }
 
-/* Prose overrides for blog */
 .prose-custom {
-  color: var(--color-muted);
+  color: var(--muted);
   line-height: 1.8;
 }
 .prose-custom h1,
 .prose-custom h2,
 .prose-custom h3,
 .prose-custom h4 {
-  color: var(--color-foreground);
+  color: var(--foreground);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-top: 2em;
@@ -195,7 +213,7 @@ label[for] {
   margin-bottom: 1.25em;
 }
 .prose-custom a {
-  color: var(--color-accent);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -211,27 +229,27 @@ label[for] {
   margin-bottom: 0.5em;
 }
 .prose-custom strong {
-  color: var(--color-foreground);
+  color: var(--foreground);
   font-weight: 600;
 }
 .prose-custom blockquote {
-  border-left: 3px solid var(--color-accent);
+  border-left: 3px solid var(--accent);
   padding-left: 1.25em;
   font-style: italic;
-  color: var(--color-foreground);
+  color: var(--foreground);
   margin: 1.5em 0;
 }
 .prose-custom code {
-  background: var(--color-surface-2);
+  background: var(--surface-2);
   padding: 0.15em 0.4em;
   border-radius: 0.35em;
   font-size: 0.9em;
   font-family: var(--font-mono);
-  color: var(--color-accent);
+  color: var(--accent);
 }
 .prose-custom pre {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 0.75em;
   padding: 1.25em;
   overflow-x: auto;
@@ -240,7 +258,7 @@ label[for] {
 .prose-custom pre code {
   background: transparent;
   padding: 0;
-  color: var(--color-foreground);
+  color: var(--foreground);
 }
 
 @media (prefers-reduced-motion: reduce) {

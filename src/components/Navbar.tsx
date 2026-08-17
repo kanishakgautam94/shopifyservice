@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { nav, site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -30,7 +31,7 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "glass border-b shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)]"
+          ? "glass border-b shadow-[0_8px_30px_-12px_color-mix(in_srgb,var(--foreground)_20%,transparent)]"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -67,20 +68,24 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
           <ButtonLink href="/contact" size="sm">
             Book a free call
           </ButtonLink>
         </div>
 
-        <button
-          className="flex size-10 items-center justify-center rounded-lg text-foreground md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            className="flex size-10 items-center justify-center rounded-lg text-foreground"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
+          </button>
+        </div>
       </Container>
 
       {open && (
