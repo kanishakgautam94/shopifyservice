@@ -49,7 +49,7 @@ export default function AboutPage() {
             <Reveal>
               <div className="flex flex-col gap-5 text-base leading-relaxed text-muted">
                 <p>
-                  I started freelancing on Shopify in 2015 and never stopped. Today I lead
+                  I&apos;ve been building on Shopify for over a decade and never stopped. Today I lead
                   development at{" "}
                   <span className="font-semibold text-foreground">Transformer Table</span>, which I
                   joined as a $50M brand and helped grow into a{" "}

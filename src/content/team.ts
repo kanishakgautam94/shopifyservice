@@ -17,7 +17,7 @@ export type CollaboratorSeat = {
 export const founder: TeamMember = {
   name: "Kanishak Gautam",
   role: "Founder & Lead Shopify Developer",
-  bio: "Shopify freelancing since 2015. Currently a developer and dev lead at Transformer Table, which grew from $50M to $150M during my time there. I lead every engagement end to end.",
+  bio: "10+ years building Shopify. Currently a developer and dev lead at Transformer Table, which grew from $50M to $150M during my time there. I lead every engagement end to end.",
   initials: "KG",
 };
 

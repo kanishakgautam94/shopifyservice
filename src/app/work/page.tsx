@@ -23,7 +23,7 @@ export default function WorkPage() {
       <PageHeader
         eyebrow="Selected work"
         title="Stores I've built and scaled"
-        description="500+ Shopify projects since 2015. Here's a selection. Detailed case studies are on the way as I get sign-off from each brand."
+        description="500+ Shopify projects delivered. Here's a selection. Detailed case studies are on the way as I get sign-off from each brand."
       />
 
       {featured && (

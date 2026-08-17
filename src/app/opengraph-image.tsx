@@ -66,7 +66,7 @@ export default function OgImage() {
         <div style={{ display: "flex", gap: 40, color: "#6b7873", fontSize: 26 }}>
           <span>500+ projects</span>
           <span>100+ brands</span>
-          <span>Since 2015</span>
+          <span>10+ years</span>
         </div>
       </div>
     ),

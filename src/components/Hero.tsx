@@ -64,7 +64,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-muted">
               <span className="size-1.5 rounded-full bg-accent" />
-              500+ Shopify projects · freelancing since 2015
+              500+ Shopify projects delivered
             </span>
           </motion.div>
 
