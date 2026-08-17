@@ -3,28 +3,19 @@
 import { useEffect, useState } from "react";
 
 /**
- * True when we should run entrance / hover motion.
- * Off by default for SSR + phones (hover:none) to avoid iOS flicker.
+ * True on phones / touch-first devices.
+ * Used only to skip scroll-linked parallax (iOS Safari jank), not entrance motion.
  */
-export function useMotionEnabled() {
-  const [enabled, setEnabled] = useState(false);
+export function useIsTouchDevice() {
+  const [touch, setTouch] = useState(false);
 
   useEffect(() => {
-    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    const update = () => {
-      setEnabled(finePointer.matches && !reduceMotion.matches);
-    };
-
+    const mq = window.matchMedia("(hover: none), (pointer: coarse)");
+    const update = () => setTouch(mq.matches);
     update();
-    finePointer.addEventListener("change", update);
-    reduceMotion.addEventListener("change", update);
-    return () => {
-      finePointer.removeEventListener("change", update);
-      reduceMotion.removeEventListener("change", update);
-    };
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  return enabled;
+  return touch;
 }

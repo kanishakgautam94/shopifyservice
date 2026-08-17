@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { animate, useInView, useReducedMotion } from "framer-motion";
-import { useMotionEnabled } from "@/hooks/useMotionEnabled";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -19,7 +18,6 @@ export function CountUp({
   const ran = useRef(false);
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduce = useReducedMotion();
-  const motionOk = useMotionEnabled();
 
   const match = value.match(/^(\D*)([\d,.]+)(.*)$/);
   const prefix = match?.[1] ?? "";
@@ -28,13 +26,13 @@ export function CountUp({
   const target = numStr ? parseFloat(numStr.replace(/,/g, "")) : NaN;
   const hasDecimal = numStr.includes(".");
 
-  // Start at the final value so phones never flash 0 → animate → 0 → animate.
+  // Start at final value so remounts never flash 0; animate only once when first in view.
   const [display, setDisplay] = useState(isNaN(target) ? 0 : target);
 
   useEffect(() => {
     if (isNaN(target) || ran.current) return;
 
-    if (!motionOk || reduce) {
+    if (reduce) {
       ran.current = true;
       setDisplay(target);
       return;
@@ -50,7 +48,7 @@ export function CountUp({
       onUpdate: (v) => setDisplay(v),
     });
     return () => controls.stop();
-  }, [inView, reduce, target, duration, motionOk]);
+  }, [inView, reduce, target, duration]);
 
   if (isNaN(target)) {
     return (

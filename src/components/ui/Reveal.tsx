@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useEffect, useId, useRef, type ReactNode } from "react";
-import { useMotionEnabled } from "@/hooks/useMotionEnabled";
+import { useId, useRef, type ReactNode } from "react";
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
@@ -23,30 +22,19 @@ export function Reveal({
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const motionOk = useMotionEnabled();
-  const inView = useInView(ref, { once: true, amount: 0.2 });
-
-  // Sync mark during render so iOS bounce can't replay before useEffect runs.
-  if (inView) played.add(id);
+  const inView = useInView(ref, { once: true, amount: 0.15 });
 
   const alreadyPlayed = played.has(id);
-  const show = !motionOk || alreadyPlayed || !!reduce;
-  const offset = reduce || !motionOk ? 0 : y;
+  if (inView) played.add(id);
 
-  if (!motionOk) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
-    );
-  }
+  const visible = alreadyPlayed || inView || !!reduce;
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={false}
-      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: offset }}
+      initial={alreadyPlayed || reduce ? false : { opacity: 0, y }}
+      animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: reduce ? 0 : y }}
       transition={{ duration: 0.45, delay: alreadyPlayed ? 0 : delay, ease }}
     >
       {children}
@@ -63,21 +51,13 @@ export function RevealStagger({
 }) {
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
-  const motionOk = useMotionEnabled();
+  const reduce = useReducedMotion();
   const inView = useInView(ref, { once: true, amount: 0.12 });
 
+  const alreadyPlayed = played.has(id);
   if (inView) played.add(id);
 
-  const alreadyPlayed = played.has(id);
-  const show = !motionOk || alreadyPlayed;
-
-  if (!motionOk) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
-    );
-  }
+  const show = alreadyPlayed || inView || !!reduce;
 
   return (
     <motion.div
@@ -89,8 +69,8 @@ export function RevealStagger({
         hidden: {},
         show: {
           transition: {
-            staggerChildren: alreadyPlayed ? 0 : 0.06,
-            delayChildren: alreadyPlayed ? 0 : 0.02,
+            staggerChildren: alreadyPlayed || reduce ? 0 : 0.06,
+            delayChildren: alreadyPlayed || reduce ? 0 : 0.02,
           },
         },
       }}
@@ -108,11 +88,6 @@ export function RevealItem({
   className?: string;
 }) {
   const reduce = useReducedMotion();
-  const motionOk = useMotionEnabled();
-
-  if (!motionOk) {
-    return <div className={className}>{children}</div>;
-  }
 
   return (
     <motion.div

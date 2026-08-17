@@ -167,25 +167,9 @@ label[for] {
 }
 
 @media (max-width: 767px) {
-  /* iPhone: static wrap avoids Safari transform/mask overlap bugs */
+  /* Slightly slower on phones so the loop feels smooth, not frantic */
   .marquee-track {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    max-width: 100%;
-    animation: none;
-    row-gap: 0.75rem;
-    column-gap: 1.25rem;
-    padding-inline: 1rem;
-  }
-
-  .marquee-group {
-    display: contents;
-  }
-
-  .marquee-group[data-copy="1"] {
-    display: none;
+    animation-duration: 90s;
   }
 }
 

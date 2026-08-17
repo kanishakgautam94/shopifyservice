@@ -76,9 +76,9 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Trust marquee — desktop scroll; static wrap on iPhone */}
+      {/* Trust marquee */}
       <section className="border-y border-border bg-surface py-6" aria-label="Capabilities">
-        <div className="relative overflow-hidden md:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
           <div className="marquee-track">
             {[0, 1].map((copy) => (
               <div key={copy} className="marquee-group" data-copy={copy}>
@@ -88,7 +88,7 @@ export default function HomePage() {
                     className="whitespace-nowrap text-sm font-medium uppercase tracking-wider text-muted-2"
                   >
                     {item}
-                    <span className="ml-10 text-accent/40 md:inline max-md:ml-0 max-md:hidden">
+                    <span className="ml-10 text-accent/40" aria-hidden>
                       /
                     </span>
                   </span>

@@ -7,7 +7,6 @@ import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { CountUp } from "@/components/ui/CountUp";
 import { stats } from "@/content/site";
-import { useMotionEnabled } from "@/hooks/useMotionEnabled";
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
@@ -25,7 +24,6 @@ const fade: Variants = {
 
 export function Hero() {
   const reduce = useReducedMotion();
-  const motionOk = useMotionEnabled();
   const alreadyPlayed = useRef(heroPlayed);
   const [play, setPlay] = useState(heroPlayed);
 
@@ -34,14 +32,14 @@ export function Hero() {
     setPlay(true);
   }, []);
 
-  const skipEntrance = !motionOk || alreadyPlayed.current || !!reduce;
+  const skipEntrance = alreadyPlayed.current || !!reduce;
 
   return (
     <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="bg-radial-accent pointer-events-none absolute inset-0" />
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
 
-      {motionOk && play && !reduce && (
+      {play && !reduce && (
         <>
           <motion.div
             aria-hidden
@@ -64,7 +62,7 @@ export function Hero() {
             custom={0}
             variants={fade}
             initial={skipEntrance ? false : "hidden"}
-            animate={play || skipEntrance ? "show" : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-muted">
               <span className="size-1.5 rounded-full bg-accent" />
@@ -76,7 +74,7 @@ export function Hero() {
             custom={1}
             variants={fade}
             initial={skipEntrance ? false : "hidden"}
-            animate={play || skipEntrance ? "show" : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
             className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
             <span className="text-gradient">I&apos;m Kanishak.</span>{" "}
@@ -87,7 +85,7 @@ export function Hero() {
             custom={2}
             variants={fade}
             initial={skipEntrance ? false : "hidden"}
-            animate={play || skipEntrance ? "show" : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
             className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
             I lead every project end to end, from theme to headless to custom apps, with a small
@@ -98,7 +96,7 @@ export function Hero() {
             custom={3}
             variants={fade}
             initial={skipEntrance ? false : "hidden"}
-            animate={play || skipEntrance ? "show" : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
             className="mt-9 flex flex-col gap-3 sm:flex-row"
           >
             <ButtonLink href="/contact" size="lg">
@@ -114,7 +112,7 @@ export function Hero() {
           custom={4}
           variants={fade}
           initial={skipEntrance ? false : "hidden"}
-          animate={play || skipEntrance ? "show" : "hidden"}
+          animate={play || reduce ? "show" : "hidden"}
           className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4"
         >
           {stats.map((s) => (
