@@ -8,17 +8,17 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function CountUp({
   value,
   className,
-  duration = 1.6,
+  duration = 1.4,
 }: {
   value: string;
   className?: string;
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const ran = useRef(false);
+  const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduce = useReducedMotion();
 
-  // Split "$150M" -> prefix "$", number "150", suffix "M"
   const match = value.match(/^(\D*)([\d,.]+)(.*)$/);
   const prefix = match?.[1] ?? "";
   const numStr = match?.[2] ?? "";
@@ -26,14 +26,23 @@ export function CountUp({
   const target = numStr ? parseFloat(numStr.replace(/,/g, "")) : NaN;
   const hasDecimal = numStr.includes(".");
 
-  const [display, setDisplay] = useState(reduce || isNaN(target) ? target : 0);
+  const [display, setDisplay] = useState(isNaN(target) ? 0 : target);
 
   useEffect(() => {
-    if (isNaN(target)) return;
-    if (!inView || reduce) {
+    if (isNaN(target) || ran.current) return;
+
+    if (reduce) {
+      ran.current = true;
       setDisplay(target);
       return;
     }
+
+    if (!inView) {
+      setDisplay(0);
+      return;
+    }
+
+    ran.current = true;
     const controls = animate(0, target, {
       duration,
       ease,
@@ -42,7 +51,6 @@ export function CountUp({
     return () => controls.stop();
   }, [inView, reduce, target, duration]);
 
-  // Non-numeric values render as-is.
   if (isNaN(target)) {
     return (
       <span ref={ref} className={className}>

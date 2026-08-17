@@ -76,20 +76,25 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Trust marquee */}
-      <section className="border-y border-border bg-surface py-6">
-        <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="flex shrink-0 animate-marquee items-center gap-10 pr-10">
-            {[...marquee, ...marquee].map((item, i) => (
-              <span
-                key={i}
-                className="whitespace-nowrap text-sm font-medium uppercase tracking-wider text-muted-2"
-              >
-                {item}
-                <span className="ml-10 text-accent/40">/</span>
-              </span>
-            ))}
-          </div>
+      {/* Trust marquee — two identical tracks for a seamless loop */}
+      <section className="border-y border-border bg-surface py-6" aria-hidden>
+        <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          {[0, 1].map((copy) => (
+            <div
+              key={copy}
+              className="flex shrink-0 animate-marquee items-center gap-10 pr-10"
+            >
+              {marquee.map((item) => (
+                <span
+                  key={`${copy}-${item}`}
+                  className="whitespace-nowrap text-sm font-medium uppercase tracking-wider text-muted-2"
+                >
+                  {item}
+                  <span className="ml-10 text-accent/40">/</span>
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 

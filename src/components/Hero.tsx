@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
@@ -9,25 +10,34 @@ import { stats } from "@/content/site";
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
+/** Prevents hero entrance from replaying on Strict Mode remount. */
+let heroPlayed = false;
+
 const fade: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease },
+    transition: { duration: 0.5, delay: i * 0.06, ease },
   }),
 };
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const alreadyPlayed = useRef(heroPlayed);
+  const [play, setPlay] = useState(heroPlayed);
+
+  useEffect(() => {
+    heroPlayed = true;
+    setPlay(true);
+  }, []);
 
   return (
     <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="bg-radial-accent pointer-events-none absolute inset-0" />
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
 
-      {/* Animated ambient light blobs */}
-      {!reduce && (
+      {play && !reduce && (
         <>
           <motion.div
             aria-hidden
@@ -46,7 +56,12 @@ export function Hero() {
 
       <Container className="relative">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <motion.div custom={0} variants={fade} initial="hidden" animate="show">
+          <motion.div
+            custom={0}
+            variants={fade}
+            initial={alreadyPlayed.current || reduce ? false : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
+          >
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-muted">
               <span className="size-1.5 rounded-full bg-accent" />
               500+ Shopify projects · freelancing since 2015
@@ -56,8 +71,8 @@ export function Hero() {
           <motion.h1
             custom={1}
             variants={fade}
-            initial="hidden"
-            animate="show"
+            initial={alreadyPlayed.current || reduce ? false : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
             className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
             <span className="text-gradient">I&apos;m Kanishak.</span>{" "}
@@ -67,8 +82,8 @@ export function Hero() {
           <motion.p
             custom={2}
             variants={fade}
-            initial="hidden"
-            animate="show"
+            initial={alreadyPlayed.current || reduce ? false : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
             className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
             I lead every project end to end, from theme to headless to custom apps, with a small
@@ -78,8 +93,8 @@ export function Hero() {
           <motion.div
             custom={3}
             variants={fade}
-            initial="hidden"
-            animate="show"
+            initial={alreadyPlayed.current || reduce ? false : "hidden"}
+            animate={play || reduce ? "show" : "hidden"}
             className="mt-9 flex flex-col gap-3 sm:flex-row"
           >
             <ButtonLink href="/contact" size="lg">
@@ -94,8 +109,8 @@ export function Hero() {
         <motion.div
           custom={4}
           variants={fade}
-          initial="hidden"
-          animate="show"
+          initial={alreadyPlayed.current || reduce ? false : "hidden"}
+          animate={play || reduce ? "show" : "hidden"}
           className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4"
         >
           {stats.map((s) => (
