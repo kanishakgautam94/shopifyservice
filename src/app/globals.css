@@ -152,14 +152,18 @@ label[for] {
 
 .marquee-track {
   display: flex;
+  flex-wrap: nowrap;
   width: max-content;
-  animation: marquee 70s linear infinite;
+  will-change: transform;
   backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  animation: marquee 70s linear infinite;
+  -webkit-animation: marquee 70s linear infinite;
 }
 
 .marquee-group {
   display: flex;
+  flex-wrap: nowrap;
   flex-shrink: 0;
   align-items: center;
   gap: 2.5rem;
@@ -167,15 +171,16 @@ label[for] {
 }
 
 @media (max-width: 767px) {
-  /* Slightly slower on phones so the loop feels smooth, not frantic */
   .marquee-track {
     animation-duration: 90s;
+    -webkit-animation-duration: 90s;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
+    -webkit-animation: none;
   }
 }
 
