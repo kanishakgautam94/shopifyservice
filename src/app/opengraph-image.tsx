@@ -56,7 +56,7 @@ export default function OgImage() {
               maxWidth: 900,
             }}
           >
-            Kanishak Gautam · Senior Shopify for $1M+ brands
+            Kanishak Gautam · I build Shopify for $1M+ brands
           </div>
           <div style={{ color: "#9aa7a2", fontSize: 30, maxWidth: 820 }}>
             Theme · Shopify Plus · Headless · Custom Apps · CRO

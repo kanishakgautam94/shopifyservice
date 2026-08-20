@@ -78,7 +78,7 @@ export function Hero() {
             className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
             <span className="text-gradient">I&apos;m Kanishak.</span>{" "}
-            <span className="text-gradient-accent">Senior Shopify for $1M+ brands.</span>
+            <span className="text-gradient-accent">I build Shopify for $1M+ brands.</span>
           </motion.h1>
 
           <motion.p
