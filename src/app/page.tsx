@@ -10,6 +10,7 @@ import {
   Gauge,
 } from "lucide-react";
 import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, RevealStagger, RevealItem } from "@/components/ui/Reveal";
@@ -76,28 +77,7 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Trust marquee */}
-      <section className="border-y border-border bg-surface py-6" aria-label="Capabilities">
-        <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          <div className="marquee-track">
-            {[0, 1].map((copy) => (
-              <div key={copy} className="marquee-group" data-copy={copy}>
-                {marquee.map((item) => (
-                  <span
-                    key={`${copy}-${item}`}
-                    className="whitespace-nowrap text-sm font-medium uppercase tracking-wider text-muted-2"
-                  >
-                    {item}
-                    <span className="ml-10 text-accent/40" aria-hidden>
-                      /
-                    </span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Marquee items={marquee} />
 
       {/* Trust & Authority strip */}
       <section className="py-14">

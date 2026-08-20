@@ -150,6 +150,30 @@ label[for] {
   }
 }
 
+.marquee-viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2.5rem;
+  pointer-events: none;
+}
+
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--surface), transparent);
+}
+
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--surface), transparent);
+}
+
 .marquee-track {
   display: flex;
   flex-wrap: nowrap;
@@ -157,8 +181,7 @@ label[for] {
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  animation: marquee 70s linear infinite;
-  -webkit-animation: marquee 70s linear infinite;
+  transform: translate3d(0, 0, 0);
 }
 
 .marquee-group {
@@ -170,17 +193,14 @@ label[for] {
   padding-right: 2.5rem;
 }
 
-@media (max-width: 767px) {
-  .marquee-track {
-    animation-duration: 90s;
-    -webkit-animation-duration: 90s;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
-    animation: none;
-    -webkit-animation: none;
+    /* JS marquee is disabled; keep a single static row */
+    transform: none !important;
+  }
+
+  .marquee-group[data-copy="1"] {
+    display: none;
   }
 }
 
